@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const asyncHandler = require("express-async-handler");
 const UserModel = require("../models/userModel");
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const { generateToken } = require("../config/jwtToken");
 const dotenv = require("dotenv").config()
 const createUser = asyncHandler(async (req, res) => {
   const { firstname, lastname, mobile, email, password } = req.body;
@@ -38,12 +39,12 @@ const login = asyncHandler(async (req, res) => {
     const hashedpassword = await bcrypt.compare(password, oldUser.password);
 
     if (!hashedpassword) {
-      return res.status(404).json("Password incorrect");
+      return res.status(404).json({msg:"Password incorrect"});
     }
-    const token = jwt.sign({ userId: oldUser._id }, process.env.SECRET);
+    const token = generateToken(oldUser._id)
     return res.status(200).json({ message: "Login Success", token });
   } catch (err) {
-    console.log(err)
+    
     return res.status(404).json("Something went wrong");
   }
 });
