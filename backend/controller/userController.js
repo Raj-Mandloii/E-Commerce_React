@@ -29,7 +29,7 @@ const createUser = asyncHandler(async (req, res) => {
       });
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 });
 
@@ -73,7 +73,7 @@ const getSingleUser = asyncHandler(async (req, res) => {
 
   try {
     const singleUser = await UserModel.findById(id);
-    console.log(singleUser);
+
     res.json({ user: singleUser });
   } catch (e) {
     throw new Error(e);
@@ -87,10 +87,30 @@ const deleteUser = asyncHandler(async (req, res) => {
 
   try {
     const singleUser = await UserModel.findByIdAndDelete(id);
-    console.log(singleUser);
+
     res.json({ userDeleted: singleUser });
   } catch (e) {
     throw new Error(e);
   }
 });
-module.exports = { createUser, login, getAllUser, getSingleUser, deleteUser };
+
+// Update a user
+
+const updateUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const update = await UserModel.findByIdAndUpdate(id, req.body);
+  } catch (e) {
+    throw new Error(e);
+  }
+});
+
+module.exports = {
+  createUser,
+  login,
+  getAllUser,
+  getSingleUser,
+  deleteUser,
+  updateUser,
+};
