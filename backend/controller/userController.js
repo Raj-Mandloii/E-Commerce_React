@@ -1,13 +1,13 @@
 
 const bcrypt = require("bcrypt");
-
+const asyncHandler = require("express-async-handler")
 const UserModel = require("../models/userModel");
 
-const createUser = async (req, res) => {
+const createUser = asyncHandler(async (req, res) => {
     const {firstname,lastname,mobile,email,password} = req.body
   const exist1 = await UserModel.find({ email });
   if (exist1.length > 0) {
-    res.status(400).json("Already regestered Please Login");
+    throw new Error(`User Already Exists`)
   } else {
     bcrypt.hash(password, 6, async (err, hash) => {
       if (err) {
@@ -18,6 +18,6 @@ const createUser = async (req, res) => {
       res.status(200).json({ msg: "Signup success" });
     });
   }
-};
+})
 
 module.exports = createUser;
