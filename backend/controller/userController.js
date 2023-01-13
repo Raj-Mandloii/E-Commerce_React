@@ -11,7 +11,7 @@ const createUser = async (req, res) => {
   } else {
     bcrypt.hash(password, 6, async (err, hash) => {
       if (err) {
-        res.status(400).json("Already regestered please Login");
+        res.status(400).json({msg:"Already regestered please Login"});
       }
       const new_user = new UserModel({ email, password: hash, firstname,lastname,mobile });
       await new_user.save();
