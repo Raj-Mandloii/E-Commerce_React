@@ -3,12 +3,11 @@ const app = express()
 const dotenv = require("dotenv").config()
 const PORT = process.env.PORT || 8080
 const connection = require("./config/connection")
+const authRoute = require("./routes/authRoutes")
 
 
-app.use("/",()=>{
-    res.send()
-})
-
+app.use(express.json())
+app.use("/api/user",authRoute)
 app.listen(PORT,async ()=>{
     try{
         await connection;
