@@ -3,7 +3,9 @@ const asyncHandler = require("express-async-handler");
 const UserModel = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const { generateToken } = require("../config/jwtToken");
-const dotenv = require("dotenv").config()
+const dotenv = require("dotenv").config();
+
+// Create User
 const createUser = asyncHandler(async (req, res) => {
   const { firstname, lastname, mobile, email, password } = req.body;
   const exist1 = await UserModel.find({ email });
@@ -27,6 +29,7 @@ const createUser = asyncHandler(async (req, res) => {
   }
 });
 
+// Login User
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -39,13 +42,37 @@ const login = asyncHandler(async (req, res) => {
     const hashedpassword = await bcrypt.compare(password, oldUser.password);
 
     if (!hashedpassword) {
-      return res.status(404).json({msg:"Password incorrect"});
+      return res.status(404).json({ msg: "Password incorrect" });
     }
-    const token = generateToken(oldUser._id)
+    const token = generateToken(oldUser._id);
     return res.status(200).json({ message: "Login Success", token });
   } catch (err) {
-    
     return res.status(404).json("Something went wrong");
   }
 });
-module.exports = { createUser, login };
+
+// Get all users
+
+const getAllUser = asyncHandler(async (req, res) => {
+  try {
+    const getUsers = await UserModel.find();
+    res.json(getUsers);
+  } catch (e) {
+    throw new Error(e);
+  }
+});
+
+// Get single user
+
+const getSingleUser = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const singleUser = await UserModel.findById(id)
+    console.log(singleUser)
+    res.json({user:singleUser})
+  } catch (e) {
+    throw new Error(e);
+  }
+});
+module.exports = { createUser, login, getAllUser, getSingleUser };
