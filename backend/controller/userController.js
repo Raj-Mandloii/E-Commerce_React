@@ -100,7 +100,17 @@ const updateUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   try {
-    const update = await UserModel.findByIdAndUpdate(id, req.body);
+    const update = await UserModel.findByIdAndUpdate(
+      id,
+      {
+        firstname: req?.body.firstname,
+        lastname: req?.body.lastname,
+        mobile: req?.body.mobile,
+        email: req?.body.email,
+      },
+      { new: true }
+    );
+    res.json(update)
   } catch (e) {
     throw new Error(e);
   }
