@@ -6,12 +6,15 @@ const connection = require("./config/connection")
 const { notFound, errorHandler } = require("./middlewares/errorHandler")
 const authRoute = require("./routes/authRoutes")
 const cookieParser = require("cookie-parser")
+const productRouter = require("./routes/productRoutes")
 
 app.use(express.json())
 app.use(cookieParser())
 
 
 app.use("/api/user",authRoute)
+app.use("/api/product",productRouter)
+
 app.use(notFound)
 app.use(errorHandler)
 
