@@ -5,10 +5,10 @@ const PORT = process.env.PORT || 8080
 const connection = require("./config/connection")
 const { notFound, errorHandler } = require("./middlewares/errorHandler")
 const authRoute = require("./routes/authRoutes")
-
+const cookieParser = require("cookie-parser")
 
 app.use(express.json())
-
+app.use(cookieParser())
 
 
 app.use("/api/user",authRoute)
