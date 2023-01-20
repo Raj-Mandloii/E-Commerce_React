@@ -7,12 +7,19 @@ const { notFound, errorHandler } = require("./middlewares/errorHandler")
 const authRoute = require("./routes/authRoutes")
 const cookieParser = require("cookie-parser")
 const productRouter = require("./routes/productRoutes")
+const morgan = require("morgan")
+
+// Morgan middleware is used to track the request status such as 
+// time, type and client type.
+app.use(morgan("dev"))
+
+
 
 app.use(express.json())
 app.use(cookieParser())
 
-
 app.use("/api/user",authRoute)
+
 app.use("/api/product",productRouter)
 
 app.use(notFound)
