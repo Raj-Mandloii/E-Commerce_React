@@ -1,21 +1,24 @@
 const express = require("express");
 const {
   createProduct,
-  getProduct,
+  getaProduct,
   getAllProduct,
   updateProduct,
   deleteProduct,
+  addToWishlist,
+  rating,
 } = require("../controller/productController");
 const { isAdmin, authMiddleware } = require("../middlewares/authMiddleware");
-console.log("INSIDE PRODUCT ROUTE::::::::::::::::")
 const router = express.Router();
-router.post("/", isAdmin, authMiddleware, createProduct);
 
-router.get("/:id", getProduct);
+router.post("/", authMiddleware, isAdmin, createProduct);
 
-router.put("/:id", isAdmin, authMiddleware, updateProduct);
+router.get("/:id", getaProduct);
+router.put("/wishlist", authMiddleware, addToWishlist);
+router.put("/rating", authMiddleware, rating);
 
-router.delete("/:id", isAdmin, authMiddleware, deleteProduct);
+router.put("/:id", authMiddleware, isAdmin, updateProduct);
+router.delete("/:id", authMiddleware, isAdmin, deleteProduct);
 
 router.get("/", getAllProduct);
 
