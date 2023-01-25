@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const connection = () => {
+const databaseConnect = () => {
   try {
     const conn = mongoose.connect(process.env.MONGO_URL);
     console.log("Database Connected Successfully");
@@ -8,4 +8,4 @@ const connection = () => {
     console.log("DAtabase error");
   }
 };
-module.exports = connection;
+module.exports = databaseConnect;
