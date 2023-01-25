@@ -1,10 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-   <h1>App</h1>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* <Route index element={<Home />} /> */}
+        {/* <Route path="about" element={<About />} /> */}
+        </Route>
+    </Routes>
   );
 }
 
