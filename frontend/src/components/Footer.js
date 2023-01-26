@@ -42,28 +42,28 @@ const Footer = () => {
                   PinCode: 131103
                 </address>
                 <a
-                  href="tel:+91 8264954234"
+                  href="tel:+91 8770265192"
                   className="mt-3 d-block mb-1 text-white"
                 >
-                  +91 8264954234
+                  +91 8770265192
                 </a>
                 <a
-                  href="mailto:navdeepdahiya753@gmail.com"
+                  href="mailto:rajmandloi1232@gmail.com"
                   className="mt-2 d-block mb-0 text-white"
                 >
-                  navdeepdahiya753@gmail.com
+                  rajmandloi1232@gmail.com
                 </a>
                 <div className="social_icons d-flex align-items-center gap-30 mt-4">
-                  <a className="text-white" href="#">
+                  <a className="text-white" href="https://www.linkedin.com/in/raj-mandloi/">
                     <BsLinkedin className="fs-4" />
                   </a>
-                  <a className="text-white" href="#">
+                  <a className="text-white" href="https://www.linkedin.com/in/raj-mandloi/">
                     <BsInstagram className="fs-4" />
                   </a>
-                  <a className="text-white" href="#">
+                  <a className="text-white" href="https://github.com/Raj-Mandloii/E-Commerce_React">
                     <BsGithub className="fs-4" />
                   </a>
-                  <a className="text-white" href="#">
+                  <a className="text-white" href="https://github.com/Raj-Mandloii/E-Commerce_React">
                     <BsYoutube className="fs-4" />
                   </a>
                 </div>
@@ -112,7 +112,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-12">
               <p className="text-center mb-0 text-white">
-                &copy; {new Date().getFullYear()}; Powered by Developer's Corner
+                &copy; {new Date().getFullYear()}; Powered by E-Shop
               </p>
             </div>
           </div>
