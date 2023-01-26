@@ -12,11 +12,10 @@ import watch from "../images/watch.jpg";
 import Container from "../components/Container";
 const SingleProduct = () => {
   const props = {
-    width: 594,
-    height: 600,
-    zoomWidth: 600,
-
-    img: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?cs=srgb&dl=pexels-fernando-arcos-190819.jpg&fm=jpg",
+    // width: 394,
+    // height: 600,
+    // zoomWidth: 600,
+    // img: "https://www.reliancedigital.in/medias/Oppo-K10-Smartphone-492849761-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w0Mzg1MzJ8aW1hZ2UvanBlZ3xpbWFnZXMvaGNjL2gxYS85ODcwMzI4MTM1NzEwLmpwZ3w5NGViYzVhODFlMDBkOWU0ZTVmMTcyNDgzYjg0ZGQwY2FhNTIzMWI0YzZjMjlhMGU3NTA3Zjk1ZmEzYzc1MjMz",
   };
 
   const [orderedProduct, setorderedProduct] = useState(true);
@@ -77,7 +76,7 @@ const SingleProduct = () => {
             <div className="main-product-details">
               <div className="border-bottom">
                 <h3 className="title">
-                  Kids Headphones Bulk 10 Pack Multi Colored For Students
+                  Headphones Bulk 10 Pack Multi Colored For Students
                 </h3>
               </div>
               <div className="border-bottom py-3">
@@ -201,6 +200,9 @@ const SingleProduct = () => {
           </div>
         </div>
       </Container>
+      
+
+      
       <Container class1="description-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
@@ -328,13 +330,13 @@ const SingleProduct = () => {
             <div className="modal-body py-0">
               <div className="d-flex align-items-center">
                 <div className="flex-grow-1 w-50">
-                  <img src={watch} className="img-fluid" alt="product imgae" />
+                  <img src={watch}  className="img-fluid" alt="product image" />
                 </div>
                 <div className="d-flex flex-column flex-grow-1 w-50">
                   <h6 className="mb-3">Apple Watch</h6>
-                  <p className="mb-1">Quantity: asgfd</p>
-                  <p className="mb-1">Color: asgfd</p>
-                  <p className="mb-1">Size: asgfd</p>
+                  <p className="mb-1">Quantity: 2</p>
+                  <p className="mb-1">Color: Black</p>
+                  <p className="mb-1">Size: Med</p>
                 </div>
               </div>
             </div>

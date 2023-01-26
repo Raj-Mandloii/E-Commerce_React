@@ -138,7 +138,7 @@ const OurStore = () => {
                   </div>
                   <div className="w-50">
                     <h5>
-                      Kids headphones bulk 10 pack multi colored for students
+                      Headphones bulk 10 pack multi colored for students
                     </h5>
                     <ReactStars
                       count={5}
