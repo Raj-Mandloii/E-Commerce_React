@@ -45,24 +45,29 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 const getaProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  console.log('get a product',id)
   validateMongoDbId(id);
+  console.log("AFTER VALIDATION")
   try {
     const findProduct = await Product.findById(id);
+    console.log("SINGLE PRODUCT",findProduct)
     res.json(findProduct);
   } catch (error) {
+    console.log(error)
     throw new Error(error);
   }
 });
 
 const getAllProduct = asyncHandler(async (req, res) => {
+  console.log('get all products')
   try {
+
     // Filtering
     const queryObj = { ...req.query };
     const excludeFields = ["page", "sort", "limit", "fields"];
     excludeFields.forEach((el) => delete queryObj[el]);
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-
     let query = Product.find(JSON.parse(queryStr));
 
     // Sorting
