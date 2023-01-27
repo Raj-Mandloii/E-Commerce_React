@@ -1,25 +1,31 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 
+const baseUrl = "http://localhost:8080/api";
+
 const register = (payload) => (dispatch) => {
   dispatch({ type: types.REGISTER_REQUEST });
   return axios
-    .post("http://localhost:8080/auth/register", payload)
+    .post(baseUrl + "/user/register", payload)
     .then((r) => {
-      dispatch({ type: types.REGISTER_SUCCESS, payload: r.data });
+      return dispatch({ type: types.REGISTER_SUCCESS, payload: r.data });
     })
     .catch((e) => dispatch({ type: types.REGISTER_FAILURE, payload: e }));
 };
 
-const login = (params) => (dispatch) => {
+const login = (payload) => (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   return axios
-    .post("http://localhost:8080/auth/login", params)
+    .post(baseUrl + "/user/login", payload)
     .then((r) => {
-      dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
+      return dispatch({
+        type: types.LOGIN_SUCCESS,
+        payload: r.data.token,
+        profile: r.data,
+      });
     })
     .catch((e) => {
-      dispatch({ type: types.LOGIN_FAILURE, payload: e });
+      return dispatch({ type: types.LOGIN_FAILURE, payload: e });
     });
 };
 

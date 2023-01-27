@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import compare from "../images/compare.svg";
@@ -6,7 +6,10 @@ import wishlist from "../images/wishlist.svg";
 import user from "../images/user.svg";
 import cart from "../images/cart.svg";
 import menu from "../images/menu.svg";
+import { getLocalData } from "../utils/accessLocalStorage";
 const Header = () => {
+  const profile = getLocalData("profile") || {};
+  console.log("profile", profile);
   return (
     <>
       <header className="header-top-strip py-3">
@@ -19,7 +22,7 @@ const Header = () => {
             </div>
             <div className="col-6">
               <p className="text-end text-white mb-0">
-                Hotline: 
+                Hotline:
                 <a className="text-white" href="tel:+91 8264954234">
                   +91 8770265192
                 </a>
@@ -74,17 +77,29 @@ const Header = () => {
                     </p>
                   </Link>
                 </div>
-                <div>
-                  <Link
-                    to="/login"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
-                    <img src={user} alt="user" />
-                    <p className="mb-0">
-                      Log in <br /> My Account
-                    </p>
-                  </Link>
-                </div>
+                {profile ? (
+                  <div>
+                    <div className="d-flex align-items-center gap-10 text-white">
+                      <img src={user} alt="user" />
+                      <p className="mb-0">
+                        Hello,<br/> {profile.firstname + " " + profile.lastname}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <Link
+                      to="/login"
+                      className="d-flex align-items-center gap-10 text-white"
+                    >
+                      <img src={user} alt="user" />
+                      <p className="mb-0">
+                        Log in <br /> My Account
+                      </p>
+                    </Link>
+                  </div>
+                )}
+
                 <div>
                   <Link
                     to="/cart"

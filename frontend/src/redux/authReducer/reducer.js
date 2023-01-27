@@ -1,17 +1,16 @@
 import * as types from "./actionTypes";
-import { getLocalData, saveLocalData } from "../../utils/accessLocalStorage";
+import { getLocalData, saveLocalData, saveProfie } from "../../utils/accessLocalStorage";
 
 const initialState = {
   isAuth: getLocalData("ecommerce-token") ? true : false,
   token: getLocalData("ecommerce-token") || "",
-  profileData: [],
+  profileData: {},
   isLoading: false,
   isError: false,
 };
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
-
+  const { type, payload,profile } = action;
   switch (type) {
     case types.REGISTER_REQUEST:
       return { ...state, isLoading: true };
@@ -27,6 +26,7 @@ const reducer = (state = initialState, action) => {
 
     case types.LOGIN_SUCCESS:
       saveLocalData("ecommerce-token", payload);
+      saveProfie(profile);
       return { ...state, isLoading: false, isAuth: true, token: payload };
       
     case types.LOGIN_FAILURE:

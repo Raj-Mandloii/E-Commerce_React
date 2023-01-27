@@ -30,12 +30,14 @@ const createUser = asyncHandler(async (req, res) => {
      * TODO:if user not found user create a new user
      */
     const newUser = await User.create(req.body);
-    res.json(newUser);
+    res.status(201).json(newUser);
   } else {
     /**
      * TODO:if user found then thow an error: User already exists
      */
-    throw new Error("User Already Exists");
+    res.status(409).json({msg:"User already exists"});
+
+    // throw new Error("User Already Exists");
   }
 });
 
