@@ -5,7 +5,7 @@ const databaseConnect = () => {
     const conn = mongoose.connect(process.env.MONGO_URL);
     console.log("Database Connected Successfully");
   } catch (error) {
-    console.log("DAtabase error");
+    console.log("Database error");
   }
 };
 module.exports = databaseConnect;
