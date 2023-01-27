@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
@@ -11,24 +11,27 @@ import { Link } from "react-router-dom";
 import watch from "../images/watch.jpg";
 import Container from "../components/Container";
 const SingleProduct = () => {
-  const props = {
-    // width: 394,
-    // height: 600,
-    // zoomWidth: 600,
-    // img: "https://www.reliancedigital.in/medias/Oppo-K10-Smartphone-492849761-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w0Mzg1MzJ8aW1hZ2UvanBlZ3xpbWFnZXMvaGNjL2gxYS85ODcwMzI4MTM1NzEwLmpwZ3w5NGViYzVhODFlMDBkOWU0ZTVmMTcyNDgzYjg0ZGQwY2FhNTIzMWI0YzZjMjlhMGU3NTA3Zjk1ZmEzYzc1MjMz",
-  };
+  const image = "https://www.reliancedigital.in/medias/Oppo-K10-Smartphone-492849761-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w0Mzg1MzJ8aW1hZ2UvanBlZ3xpbWFnZXMvaGNjL2gxYS85ODcwMzI4MTM1NzEwLmpwZ3w5NGViYzVhODFlMDBkOWU0ZTVmMTcyNDgzYjg0ZGQwY2FhNTIzMWI0YzZjMjlhMGU3NTA3Zjk1ZmEzYzc1MjMz"
+  
+    const props = {
+      width: 394,
+      height: 600,
+      zoomWidth: 600,
+      img: "https://www.reliancedigital.in/medias/Oppo-K10-Smartphone-492849761-i-1-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w0Mzg1MzJ8aW1hZ2UvanBlZ3xpbWFnZXMvaGNjL2gxYS85ODcwMzI4MTM1NzEwLmpwZ3w5NGViYzVhODFlMDBkOWU0ZTVmMTcyNDgzYjg0ZGQwY2FhNTIzMWI0YzZjMjlhMGU3NTA3Zjk1ZmEzYzc1MjMz",
+    };
+
 
   const [orderedProduct, setorderedProduct] = useState(true);
-  const copyToClipboard = (text) => {
-    console.log("text", text);
-    var textField = document.createElement("textarea");
-    textField.innerText = text;
-    document.body.appendChild(textField);
-    textField.select();
-    document.execCommand("copy");
-    textField.remove();
-  };
-  const closeModal = () => {};
+  // const copyToClipboard = (text) => {
+  //   console.log("text", text);
+  //   var textField = document.createElement("textarea");
+  //   textField.innerText = text;
+  //   document.body.appendChild(textField);
+  //   textField.select();
+  //   document.execCommand("copy");
+  //   textField.remove();
+  // };
+  // const closeModal = () => {};
   return (
     <>
       <Meta title={"Product Name"} />
@@ -38,7 +41,8 @@ const SingleProduct = () => {
           <div className="col-6">
             <div className="main-product-image">
               <div>
-                <ReactImageZoom {...props} />
+                <img src={image}/>
+                {/* <ReactImageZoom {...props} /> */}
               </div>
             </div>
             <div className="other-product-images d-flex flex-wrap gap-15">
@@ -183,7 +187,7 @@ const SingleProduct = () => {
                   </p>
                 </div>
                 <div className="d-flex gap-10 align-items-center my-3">
-                  <h3 className="product-heading">Product Link:</h3>
+                  {/* <h3 className="product-heading">Product Link:</h3>
                   <a
                     href="javascript:void(0);"
                     onClick={() => {
@@ -193,7 +197,7 @@ const SingleProduct = () => {
                     }}
                   >
                     Copy Product Link
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -313,7 +317,7 @@ const SingleProduct = () => {
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
@@ -353,7 +357,7 @@ const SingleProduct = () => {
                 className="text-dark"
                 to="/product"
                 onClick={() => {
-                  closeModal();
+                  // closeModal();
                 }}
               >
                 Continue To Shopping
