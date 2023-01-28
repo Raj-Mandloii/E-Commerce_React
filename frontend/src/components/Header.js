@@ -9,7 +9,8 @@ import menu from "../images/menu.svg";
 import { getLocalData } from "../utils/accessLocalStorage";
 const Header = () => {
   const profile = getLocalData("profile") || {};
-  console.log("profile", profile);
+  // Todo -> The status of profile is not changing live ^^
+  // console.log("profile", profile);
   return (
     <>
       <header className="header-top-strip py-3">
@@ -36,7 +37,7 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="col-2">
               <h2>
-                <Link className="text-white">E-SHOP</Link>
+                <Link to='/' className="text-white">E-SHOP</Link>
               </h2>
             </div>
             <div className="col-5">
@@ -77,7 +78,7 @@ const Header = () => {
                     </p>
                   </Link>
                 </div>
-                {profile ? (
+                {profile.firstname ? (
                   <div>
                     <div className="d-flex align-items-center gap-10 text-white">
                       <img src={user} alt="user" />
