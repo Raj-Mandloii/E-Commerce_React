@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
+import { getProduct } from "../redux/appReducer/action";
+import { useDispatch, useSelector } from "react-redux";
+import Card from "../components/Card";
+
 // import { services } from "../utils/Data";
 
 const Home = () => {
+  const featuredCollectionData = useSelector(
+    (store) => store.appReducer.product
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // if (featuredCollectionData.length === 0) {
+    dispatch(getProduct());
+    // }
+  }, []);
   return (
     <>
       {/* TOP BANNER { Advertisement Stuff } */}
@@ -93,7 +106,7 @@ const Home = () => {
       {/* ^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^ */}
 
       {/* VARIOUS CATEGORIES  } */}
-      <Container class1="home-wrapper-2 py-5">
+      {/* <Container class1="home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
             <div className="categories d-flex justify-content-between flex-wrap align-items-center">
@@ -156,26 +169,26 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
       {/* ^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^ */}
 
-      {/* PRODUCT CARD -->   } */}
+      {featuredCollectionData && <Card items={featuredCollectionData}/>}
+      
 
-      <Container class1="featured-wrapper py-5 home-wrapper-2">
-        <div className="row">
+      {/* <Container class1="featured-wrapper py-5 home-wrapper-2">
+        <div style={{border:"1px solid red"}} className="row">
           <div className="col-12">
             <h3 className="section-heading">Featured Collection</h3>
+            {featuredCollectionData &&
+                featuredCollectionData.map((el) => {
+                  return <ProductCard key={el.id} item={el} />;
+                })}
           </div>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
         </div>
-      </Container>
-      {/* ^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^ */}
+      </Container> */}
+      {/*  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ */}
 
-
-      <Container class1="famous-wrapper py-5 home-wrapper-2">
+      {/* <Container class1="famous-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-3">
             <div className="famous-card position-relative">
@@ -238,9 +251,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
 
-      <Container class1="special-wrapper py-5 home-wrapper-2">
+      {/* <Container class1="special-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Special Products</h3>
@@ -265,8 +278,9 @@ const Home = () => {
           <ProductCard />
           <ProductCard />
         </div>
-      </Container>
-      <Container class1="marque-wrapper home-wrapper-2 py-5">
+      </Container> */}
+
+      {/* <Container class1="marque-wrapper home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper">
@@ -299,9 +313,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
 
-      <Container class1="blog-wrapper py-5 home-wrapper-2">
+      {/* <Container class1="blog-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 className="section-heading">Our Latest Blogs</h3>
@@ -321,7 +335,7 @@ const Home = () => {
             <BlogCard />
           </div>
         </div>
-      </Container>
+      </Container> */}
     </>
   );
 };

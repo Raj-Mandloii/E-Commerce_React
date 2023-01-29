@@ -4,6 +4,8 @@ const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
 const validateMongoDbId = require("../utils/validateMongodbId");
 
+
+
 const createProduct = asyncHandler(async (req, res) => {
   try {
     if (req.body.title) {

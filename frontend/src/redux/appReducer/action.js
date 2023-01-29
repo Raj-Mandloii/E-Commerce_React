@@ -1,12 +1,14 @@
 import * as type from "./actionTypes";
 import axios from "axios";
 
+const baseUrl = "http://localhost:8080/api/";
+
 const getProduct = (query) => (dispatch) => {
   console.log(query);
   dispatch({ type: type.REQUEST });
 
   return axios
-    .get("https://backend-production-f813.up.railway.app/job", query)
+    .get(baseUrl + "product?limit=8", query)
     .then((r) => {
       return dispatch({ type: type.SUCCESS, payload: r.data });
     })

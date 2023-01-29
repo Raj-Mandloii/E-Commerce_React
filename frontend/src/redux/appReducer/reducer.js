@@ -1,11 +1,12 @@
 import * as types from "./actionTypes";
 const initState = {
-    job: [],
+    product: [],
     loading: false,
     error: false
 }
 
 const reducer = (oldState = initState, action) => {
+    // console.log("ACTION", initState)
     switch (action.type) {
         case types.REQUEST:
             return {
@@ -20,7 +21,7 @@ const reducer = (oldState = initState, action) => {
                 ...oldState,
                 loading: false,
                 error:false,
-                job: action.payload
+                product: action.payload
 
             }
         case types.FAILURE:
