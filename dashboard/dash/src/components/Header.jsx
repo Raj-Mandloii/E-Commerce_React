@@ -14,13 +14,18 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  SearchIcon,
 } from "@chakra-ui/icons";
+import { NavLink } from "react-router-dom";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -28,12 +33,12 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("#232F3E", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"60px"}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
+        minH={"40px"}
+        py={{ base: 6 }}
+        px={{ base: 12 }}
+        // borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
@@ -44,6 +49,7 @@ export default function WithSubnavigation() {
           display={{ base: "flex", md: "none" }}
         >
           <IconButton
+            color={"white"}
             onClick={onToggle}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
@@ -53,16 +59,17 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            fontSize="large"
-            fontWeight={"bold"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            E-Shop
-          </Text>
-
+          <NavLink to="/">
+            <Text
+              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              fontFamily={"heading"}
+              fontSize="large"
+              fontWeight={"bold"}
+              color={useColorModeValue("white", "white")}
+            >
+              {"< E-Shop /> "}
+            </Text>
+          </NavLink>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -74,30 +81,48 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          <Button
-        
+          {/* <Button
+            color="white"
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
           >
             Sign In
-          </Button>
-          <Button
-            colorScheme={"custom_button"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            // color={"white"}
-            bg={"pink.400"}
-            href={"#"}
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button>
+          </Button> */}
+          <NavLink to="/login">
+            <Button
+              colorScheme={"custom_button"}
+              // display={{ base: "none", md: "inline-flex" }}
+              fontSize={"sm"}
+              fontWeight={600}
+              // color={"white"}
+              bg={"blue.400"}
+              _hover={{
+                bg: "blue.300",
+              }}
+            >
+              Sign in
+            </Button>
+          </NavLink>
+        </Stack>
+      </Flex>
+
+      <Flex
+        justifyContent={"center"}
+        bg={useColorModeValue("#232F3E", "gray.800")}
+      >
+        <Stack spacing={4} py="2" w={["80%", "60%", "60%"]} flex>
+          <InputGroup>
+            <Input
+              placeholder="Search E-Shop"
+              color="gray.500"
+              bg="white"
+              fontWeight={"medium"}
+              _placeholder={{ color: "gray.500" }}
+            />
+            <InputRightElement children={<SearchIcon color="gray.500" />} />
+          </InputGroup>
         </Stack>
       </Flex>
 
@@ -197,7 +222,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 const MobileNav = () => {
   return (
     <Stack
-      bg={useColorModeValue("white", "gray.800")}
+      bg={useColorModeValue("white", "white")}
       p={4}
       display={{ md: "none" }}
     >
