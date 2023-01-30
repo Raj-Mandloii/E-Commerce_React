@@ -106,7 +106,7 @@ const Home = () => {
       {/* ^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^ */}
 
       {/* VARIOUS CATEGORIES  } */}
-      {/* <Container class1="home-wrapper-2 py-5">
+      <Container class1="home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
             <div className="categories d-flex justify-content-between flex-wrap align-items-center">
@@ -169,7 +169,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container> */}
+      </Container>
       {/* ^^^ ^^^^^^^^^^^^^^^^^^^^^^^^^ ^^^^ */}
 
       {featuredCollectionData && <Card items={featuredCollectionData}/>}
@@ -188,7 +188,7 @@ const Home = () => {
       </Container> */}
       {/*  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ */}
 
-      {/* <Container class1="famous-wrapper py-5 home-wrapper-2">
+      <Container class1="famous-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-3">
             <div className="famous-card position-relative">
@@ -251,7 +251,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container> */}
+      </Container>
 
       {/* <Container class1="special-wrapper py-5 home-wrapper-2">
         <div className="row">
@@ -280,7 +280,7 @@ const Home = () => {
         </div>
       </Container> */}
 
-      {/* <Container class1="marque-wrapper home-wrapper-2 py-5">
+      <Container class1="marque-wrapper home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper">
@@ -313,7 +313,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Container> */}
+      </Container>
 
       {/* <Container class1="blog-wrapper py-5 home-wrapper-2">
         <div className="row">
