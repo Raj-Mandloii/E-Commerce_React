@@ -17,6 +17,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -26,6 +27,7 @@ import {
   SearchIcon,
 } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
+import WebLogo from "../assets/logo.png";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -61,13 +63,14 @@ export default function WithSubnavigation() {
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <NavLink to="/">
             <Text
+              ml="4"
               textAlign={useBreakpointValue({ base: "center", md: "left" })}
               fontFamily={"heading"}
-              fontSize="large"
+              fontSize={["small", "medium", "large"]}
               fontWeight={"bold"}
               color={useColorModeValue("white", "white")}
             >
-              {"< E-Shop /> "}
+              <Image w={["10", "8", "6"]} src={WebLogo} />
             </Text>
           </NavLink>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -81,23 +84,12 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          {/* <Button
-            color="white"
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-          >
-            Sign In
-          </Button> */}
           <NavLink to="/login">
             <Button
-              colorScheme={"custom_button"}
-              // display={{ base: "none", md: "inline-flex" }}
+              variant={"link"}
               fontSize={"sm"}
               fontWeight={600}
-              // color={"white"}
-              bg={"blue.400"}
+              mr="4"
               _hover={{
                 bg: "blue.300",
               }}
@@ -120,8 +112,16 @@ export default function WithSubnavigation() {
               bg="white"
               fontWeight={"medium"}
               _placeholder={{ color: "gray.500" }}
+              fontSize={["xs", "medium", "medium"]}
             />
-            <InputRightElement children={<SearchIcon color="gray.500" />} />
+            <InputRightElement
+              children={
+                <SearchIcon
+                  color="gray.500"
+                  fontSize={["xs", "medium", "medium"]}
+                />
+              }
+            />
           </InputGroup>
         </Stack>
       </Flex>
