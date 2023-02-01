@@ -13,7 +13,7 @@ const IMAGE =
 
 export default function ProductCardSmall() {
   return (
-    <Center py={12}>
+    <Center py={2}>
       <Box
         role={"group"}
         p={6}
@@ -39,7 +39,7 @@ export default function ProductCardSmall() {
             top: 5,
             left: 0,
             backgroundImage: `url(${IMAGE})`,
-            filter: "blur(15px)",
+            filter: "blur(5px)",
             zIndex: -1,
           }}
           _groupHover={{

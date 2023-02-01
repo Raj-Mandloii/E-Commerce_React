@@ -61,7 +61,7 @@ const Sidebar = () => {
   // }, []);
   return (
     <Box
-      minH="100vh"
+      h="100vh"
       bg={useColorModeValue("gray.100", "gray.900")}
       display="flex"
       boxShadow={"2xl"}
@@ -71,6 +71,7 @@ const Sidebar = () => {
         display={{ base: "none", md: "block" }}
       />
       <Drawer
+      isFullHeight={false}
         autoFocus={false}
         isOpen={isOpen}
         placement="left"
@@ -103,6 +104,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         direction={"column  "}
         alignItems="center"
         mx="8"
+        mt="20"
         justifyContent="space-between"
       >
         {/* --- Sort by Price  */}
@@ -183,7 +185,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
 
         {/* ----- SHOP BY Product Tags ----- */}
-        <Flex
+        {/* <Flex
           direction={"column"}
           bg="white"
           borderRadius={"15px"}
@@ -196,8 +198,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Text fontSize="md" fontWeight="bold" mb="4">
             Similar Products
           </Text>
-        </Flex>
-        <ProductCardSmall />
+        </Flex> */}
+        {/* <ProductCardSmall /> */}
       </Flex>
       {/* <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} /> */}
       {/* {LinkItems.map((link) => (
@@ -263,7 +265,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       {...rest}
     >
       <Text onClick={onOpen} color="white">
-        Filters 🔽
+        Filters ➡️
       </Text>
       {/* <IconButton
         w={5}

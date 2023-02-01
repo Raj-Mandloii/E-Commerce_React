@@ -86,12 +86,14 @@ export default function WithSubnavigation() {
         >
           <NavLink to="/login">
             <Button
+            color="gray.200"
               variant={"link"}
               fontSize={"sm"}
               fontWeight={600}
               mr="4"
               _hover={{
-                bg: "blue.300",
+                textDecor:"underline",
+               color: "gray.500" 
               }}
             >
               Sign in
@@ -134,8 +136,8 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const linkColor = useColorModeValue("gray.200", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.500", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
