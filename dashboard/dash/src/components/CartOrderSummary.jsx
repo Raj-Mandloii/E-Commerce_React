@@ -17,7 +17,7 @@ const OrderSummaryItem = (props) => {
       <Text fontWeight="medium" color={mode("gray.600", "gray.400")}>
         {label}
       </Text>
-      {value ? <Text fontWeight="medium">Rs {value}</Text> : children}
+      {value ? <Text fontWeight="medium">Rs. {value}</Text> : children}
     </Flex>
   );
 };
@@ -44,7 +44,7 @@ export const CartOrderSummary = () => {
             Total
           </Text>
           <Text fontSize="xl" fontWeight="extrabold">
-            Rs {formatPrice(597)}
+            Rs. {formatPrice(597)}
           </Text>
         </Flex>
       </Stack>

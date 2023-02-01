@@ -41,7 +41,7 @@ const Price = (props) => {
       textDecoration={isOnSale ? "line-through" : "none"}
       {...textProps}
     >
-      {children}
+      Rs. {children}
     </Text>
   );
 };
