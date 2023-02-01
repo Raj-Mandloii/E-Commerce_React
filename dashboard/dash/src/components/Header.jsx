@@ -70,7 +70,7 @@ export default function WithSubnavigation() {
               fontWeight={"bold"}
               color={useColorModeValue("white", "white")}
             >
-              <Image w={["10", "8", "6"]} src={WebLogo} />
+              <Image w={["10", "8", "12"]} src={WebLogo} />
             </Text>
           </NavLink>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -87,7 +87,7 @@ export default function WithSubnavigation() {
           <NavLink to="/login">
             <Button
               color="gray.200"
-              variant={"link"}
+              variant={"outline"}
               fontSize={"sm"}
               fontWeight={600}
               mr="4"
@@ -141,7 +141,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}>
+    <Stack direction={"row"} spacing={4} mt='4' >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -225,7 +225,7 @@ const MobileNav = () => {
   return (
     <Stack
       bg={useColorModeValue("white", "white")}
-      p={4}
+      // p={4}
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (

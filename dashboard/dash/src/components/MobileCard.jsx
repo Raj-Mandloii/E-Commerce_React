@@ -37,10 +37,16 @@ const MobileCard = () => {
         mb="6"
       >
         <Avatar p="2" ml="-4" size="xl" name="Prosper Otemuyiwa" src={IMAGE} />
-        <Flex direction={"column"}>
-          <Heading fontSize={"md"}>This is Title</Heading>
-          <Text fontSize={"sm"}>This is subtitle</Text>
+
+        <Flex direction={"column"} maxW="40%" maxH="60px" textAlign="start">
+          <Heading fontSize={"sm"}>This is Title</Heading>
+          <Text noOfLines={2} fontSize={"xs"}>
+            This is sub fdsa fdsa fds afdsa fdsa fdsaf dsafdafdasf d fdsaf
+            dsafdsaf fdsafd safdsa fdsa fdsa fsaf dtitlfdsa fdsa fsda fds e
+            tilfa jkad
+          </Text>
         </Flex>
+
         <Flex fontSize={"xs"}>
           <Button fontSize={"xs"} variant="link">
             Add to Cart
