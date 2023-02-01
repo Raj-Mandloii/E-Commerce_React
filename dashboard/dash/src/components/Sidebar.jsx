@@ -96,7 +96,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bg={useColorModeValue("gray.100", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 80 }}
+      w={{ base: "full", md: 72 }}
       // pos="fixed"
       h="full"
       {...rest}
@@ -170,16 +170,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Text fontSize="md" fontWeight="bold" mb="4">
             Filter By
           </Text>
-          <Box textAlign={"start"} lineHeight="1" fontSize={"xs"}>
+          <Box  textAlign={"start"} lineHeight="1" fontSize={"`xs`"}>
             <Text fontSize="xs" fontWeight="bold" mb="4">
               Availability
             </Text>
             <Stack spacing={5} direction="column">
-              <Checkbox colorScheme="blue" defaultChecked>
-                In Stock (1)
+              <Checkbox  colorScheme="blue" defaultChecked>
+                In Stock
               </Checkbox>
-              <Checkbox colorScheme="blue" defaultChecked>
-                Out of Stock (0)
+              <Checkbox  colorScheme="blue" defaultChecked>
+                Out of Stock
               </Checkbox>
             </Stack>
           </Box>
