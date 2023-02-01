@@ -79,8 +79,9 @@ const Sidebar = () => {
         returnFocusOnClose={false}
         onOverlayClick={onClose}
         size="xs"
+        
       >
-        <DrawerContent overflow="scroll">
+        <DrawerContent overflow="scroll" >
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
