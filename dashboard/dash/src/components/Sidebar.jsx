@@ -31,7 +31,6 @@ import {
   FiSettings,
   FiMenu,
 } from "react-icons/fi";
-import ProductCardSmall from "../components/ProductCardSmall";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 const LinkItems = [

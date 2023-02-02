@@ -1,16 +1,7 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React from "react";
+import { Card } from "./Card/Card";
 import MobileCard from "./MobileCard";
-import ProductCardSmall from "./ProductCardSmall";
 
 const ProductList = () => {
   return (
@@ -30,24 +21,7 @@ const ProductList = () => {
         gap={["2", "4", "20"]}
         justifyContent={"center"}
       >
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
-        <ProductCardSmall />
+        <Card />
       </Box>
     </Box>
   );

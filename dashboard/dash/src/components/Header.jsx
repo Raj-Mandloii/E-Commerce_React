@@ -73,11 +73,13 @@ export default function WithSubnavigation() {
               <Image w={["10", "8", "12"]} src={WebLogo} />
             </Text>
           </NavLink>
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          {/* <Flex display={{ base: "none", md: "flex" }} ml={10} >
+            <DesktopNav />
+          </Flex> */}
+        </Flex>
+        <Flex display={{ base: "none", md: "flex" }} ml={10} >
             <DesktopNav />
           </Flex>
-        </Flex>
-
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
@@ -91,6 +93,8 @@ export default function WithSubnavigation() {
               fontSize={"sm"}
               fontWeight={600}
               mr="4"
+              mt="4"
+              ml='4'
               _hover={{
                 textDecor: "underline",
                 color: "gray.500",
@@ -100,6 +104,7 @@ export default function WithSubnavigation() {
             </Button>
           </NavLink>
         </Stack>
+       
       </Flex>
 
       <Flex
@@ -141,7 +146,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4} mt='4' >
+    <Stack direction={"row"} spacing={4} mt="4">
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
