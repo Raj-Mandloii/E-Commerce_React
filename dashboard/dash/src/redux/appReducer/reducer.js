@@ -6,7 +6,6 @@ const initState = {
 }
 
 const reducer = (oldState = initState, action) => {
-    // console.log("ACTION", initState)
     switch (action.type) {
         case types.REQUEST:
             return {

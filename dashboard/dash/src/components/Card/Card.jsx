@@ -5,6 +5,7 @@ import { ProductGrid } from './ProductGrid'
 
 export const Card = () => (
   <Box
+  display={{base:"none",md:"flex"}}
     maxW="7xl"
     mx="auto"
     px={{ base: '4', md: '8', lg: '12' }}

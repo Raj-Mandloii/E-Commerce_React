@@ -1,14 +1,13 @@
 import * as type from "./actionTypes";
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080/api/";
+const baseUrl = "https://sore-lime-reindeer-toga.cyclic.app/api/";
 
 const getProduct = (query) => (dispatch) => {
-  console.log(query);
   dispatch({ type: type.REQUEST });
 
   return axios
-    .get(baseUrl + "product?limit=8", query)
+    .get(baseUrl + "product?limit=20", query)
     .then((r) => {
       return dispatch({ type: type.SUCCESS, payload: r.data });
     })
