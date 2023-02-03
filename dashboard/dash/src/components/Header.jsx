@@ -26,11 +26,22 @@ import {
   ChevronRightIcon,
   SearchIcon,
 } from "@chakra-ui/icons";
+import { FiUser } from "react-icons/fi";
+
 import { NavLink } from "react-router-dom";
 import WebLogo from "../assets/logo.png";
+import { useEffect, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  // const [profile] = useState(JSON.parse(localStorage.getItem("profile")));
+  const { token } = useSelector((store) => {
+    return {
+      token: store.authReducer.token,
+    };
+  });
+  useEffect(() => {}, [token]);
 
   return (
     <Box>
@@ -63,8 +74,9 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex
           flex={{ base: 4 }}
+          ml='2'
           justify={{ base: "center", md: "start" }}
-          // border="1px solid red"
+          //  border="1px solid red"
         >
           <NavLink to="/">
             <Image
@@ -109,24 +121,45 @@ export default function WithSubnavigation() {
           justify={"flex-end"}
           direction={"row"}
           spacing={6}
+          mr="2"
         >
-          <NavLink to="/login">
-            <Button
-              color="gray.200"
-              variant={"outline"}
-              fontSize={"xs"}
-              fontWeight={600}
-              mr="4"
-              mt="1"
-              ml="4"
+          {token ? (
+            <Flex
               _hover={{
-                textDecor: "underline",
                 color: "gray.500",
               }}
+              w="100px"
+              color={"white"}
+              fontSize="xs"
+              alignItems={"center"}
+              mt="0"
+              ml='4'
             >
-              Sign in
-            </Button>
-          </NavLink>
+              <FiUser px="4" size={"32"} />
+              <Flex direction={"column"}>
+                <Text>Welcome</Text>
+                <Text>Raj Mandloi</Text>
+              </Flex>
+            </Flex>
+          ) : (
+            <NavLink to="/login">
+              <Button
+                color="gray.200"
+                variant={"outline"}
+                fontSize={"xs"}
+                fontWeight={600}
+                mr="4"
+                mt="1"
+                ml="4"
+                _hover={{
+                  textDecor: "underline",
+                  color: "gray.500",
+                }}
+              >
+                Sign in
+              </Button>
+            </NavLink>
+          )}
         </Stack>
       </Flex>
 

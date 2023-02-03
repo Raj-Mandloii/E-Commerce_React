@@ -6,15 +6,6 @@ import { getProduct } from "../redux/appReducer/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import LoadingIndicator from "./LoadingIndicator";
 const ProductList = () => {
-  //   const { todos, loading, error } = useSelector((store) => {
-
-  //     return {
-  //         todos: store.appReducer.todos,
-  //         loading: store.loading,
-  //         error: store.error,
-  //     }
-  // }, shallowEqual)
-
   const { loading, featuredCollectionData, error } = useSelector((store) => {
     return {
       featuredCollectionData: store.appReducer.product,
@@ -25,10 +16,10 @@ const ProductList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("getting");
+    // console.log("getting");
     // if (featuredCollectionData.length === 0) {
     dispatch(getProduct());
-    console.log(loading);
+    // console.log(loading);
 
     // }
   }, []);
@@ -39,7 +30,7 @@ const ProductList = () => {
       )} */}
       {/* MOBILE SCREEN */}
       {loading ? (
-        <LoadingIndicator topMargin={10}/>
+        <LoadingIndicator topMargin={10} />
       ) : (
         featuredCollectionData.map((el) => (
           <MobileCard key={el.id} items={el} />
@@ -47,7 +38,7 @@ const ProductList = () => {
       )}
 
       {/* MEDIUM TO LARGE SCREEN */}
-      <Card />
+      <Card data={featuredCollectionData} loading={loading} error={error}/>
     </Box>
   );
 };
