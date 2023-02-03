@@ -37,9 +37,10 @@ export default function WithSubnavigation() {
       <Flex
         bg={useColorModeValue("#232F3E", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-        minH={"40px"}
+        h={"55px"}
         py={{ base: 6 }}
         px={{ base: 2 }}
+        border="1px solid red"
         // borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
@@ -60,26 +61,49 @@ export default function WithSubnavigation() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        <Flex
+          flex={{ base: 4 }}
+          justify={{ base: "center", md: "start" }}
+          // border="1px solid red"
+        >
           <NavLink to="/">
-            <Text
-              ml="4"
-              textAlign={useBreakpointValue({ base: "center", md: "left" })}
-              fontFamily={"heading"}
-              fontSize={["small", "medium", "large"]}
-              fontWeight={"bold"}
-              color={useColorModeValue("white", "white")}
-            >
-              <Image w={["10", "8", "12"]} src={WebLogo} />
-            </Text>
+            <Image
+              display={{ base: "none", md: "flex" }}
+              w={["10", "8", "12"]}
+              src={WebLogo}
+            />
           </NavLink>
-          {/* <Flex display={{ base: "none", md: "flex" }} ml={10} >
-            <DesktopNav />
-          </Flex> */}
-        </Flex>
-        <Flex display={{ base: "none", md: "flex" }} ml={10} >
-            <DesktopNav />
+
+          <Flex
+            display={{ base: "flex", md: "none" }}
+            justifyContent={"center"}
+            bg={useColorModeValue("#232F3E", "gray.800")}
+          >
+            <Stack spacing={4} py="0" flex>
+              <InputGroup>
+                <Input
+                  placeholder="Search E-Shop"
+                  color="gray.500"
+                  bg="white"
+                  fontWeight={"medium"}
+                  _placeholder={{ color: "gray.500" }}
+                  fontSize={["xs", "medium", "medium"]}
+                />
+                <InputRightElement
+                  children={
+                    <SearchIcon
+                      color="gray.500"
+                      fontSize={["xs", "medium", "medium"]}
+                    />
+                  }
+                />
+              </InputGroup>
+            </Stack>
           </Flex>
+        </Flex>
+        <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <DesktopNav />
+        </Flex>
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
@@ -90,11 +114,11 @@ export default function WithSubnavigation() {
             <Button
               color="gray.200"
               variant={"outline"}
-              fontSize={"sm"}
+              fontSize={"xs"}
               fontWeight={600}
               mr="4"
-              mt="4"
-              ml='4'
+              mt="1"
+              ml="4"
               _hover={{
                 textDecor: "underline",
                 color: "gray.500",
@@ -104,10 +128,10 @@ export default function WithSubnavigation() {
             </Button>
           </NavLink>
         </Stack>
-       
       </Flex>
 
       <Flex
+        display={{ base: "none", md: "flex" }}
         justifyContent={"center"}
         bg={useColorModeValue("#232F3E", "gray.800")}
       >
@@ -146,7 +170,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4} mt="4">
+    <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>

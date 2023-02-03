@@ -56,8 +56,8 @@ const MobileCard = ({ items }) => {
           w="100%"
           p="6"
           bg={useColorModeValue("white", "gray.800")}
-          boxShadow={"2xl"}
-          rounded={"lg"}
+          boxShadow={"lg"}
+          rounded={"2xl"}
           pos={"relative"}
           zIndex={1}
         >
@@ -110,8 +110,8 @@ const MobileCard = ({ items }) => {
           </Flex>
           <FavouriteButton
             position="absolute"
-            top="4"
-            right="4"
+            top={"-2"}
+            right="2"
             aria-label={`Add ${items.title} to your favourites`}
           />
         </Flex>
