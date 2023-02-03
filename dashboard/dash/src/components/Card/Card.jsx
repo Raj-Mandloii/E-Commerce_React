@@ -3,6 +3,7 @@ import { ProductCard } from "./ProductCard";
 import { products } from "./_data";
 import { ProductGrid } from "./ProductGrid";
 import LoadingIndicator from "../LoadingIndicator";
+import { NavLink } from "react-router-dom";
 
 export const Card = ({ data, loading, error }) => (
   <Box
@@ -14,7 +15,9 @@ export const Card = ({ data, loading, error }) => (
   >
     <ProductGrid>
       {data.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <NavLink to={`/${product.id}`}>
+          <ProductCard key={product.id} product={product} />
+        </NavLink>
       ))}
     </ProductGrid>
   </Box>

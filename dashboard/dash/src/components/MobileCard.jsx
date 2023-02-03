@@ -5,7 +5,6 @@ import {
   Button,
   Flex,
   Heading,
-  Image,
   Skeleton,
   Text,
   useColorModeValue,
@@ -14,14 +13,13 @@ import { Rating } from "./Card/Rating";
 
 import { NavLink } from "react-router-dom";
 import { FavouriteButton } from "./Card/FavouriteButton";
+import { PriceTag } from "./Card/PriceTag";
 
 const starData = {
   size: 20,
   value: 3.5,
   edit: false,
 };
-const IMAGE =
-  "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1656712887881";
 
 const MobileCard = ({ items }) => {
   const futureDate = () => {
@@ -63,16 +61,14 @@ const MobileCard = ({ items }) => {
           pos={"relative"}
           zIndex={1}
         >
-          <Image
-          objectFit={"cover"}
-            w="8rem"
-            h='8rem'
-            mr="4"
+          <Avatar
+            p="0"
+            ml="-2"
+            mr="6"
+            size="2xl"
+            name={items.title}
             src={items.thumbnail}
-            alt={items.title}
-            draggable="false"
             fallback={<Skeleton />}
-            borderRadius={{ base: "md", md: "xl" }}
           />
 
           <Flex
@@ -87,7 +83,7 @@ const MobileCard = ({ items }) => {
             </Text>
             <Flex alignItems={"center"}>
               <Text fontSize={"xs"} mt="1" mr="1">
-                {starData.value}
+                {items.rating}
               </Text>
               <Rating defaultValue={items.rating} size="sm" />
               <Text fontSize={"xs"} mt="1" ml="1">
@@ -105,7 +101,7 @@ const MobileCard = ({ items }) => {
             >
               Limited Time Deal
             </Box>
-            <Text fontWeight={"bold"}>₹ {items.price}</Text>
+            <PriceTag price={items.price+20} salePrice={items.price} currency="INR" />
             <Text color="gray" fontSize={"xs"} mt="1" mr="1">
               Get it by {futureDate()}
             </Text>

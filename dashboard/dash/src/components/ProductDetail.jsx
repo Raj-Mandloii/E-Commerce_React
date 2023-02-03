@@ -18,8 +18,12 @@ import {
   } from '@chakra-ui/react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
   
   export default function ProductDetails() {
+    const {id } = useParams()
+    
+    
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid

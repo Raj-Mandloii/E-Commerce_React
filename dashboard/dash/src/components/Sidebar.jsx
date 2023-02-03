@@ -70,17 +70,16 @@ const Sidebar = () => {
         display={{ base: "none", md: "block" }}
       />
       <Drawer
-      isFullHeight={false}
+        isFullHeight={false}
         autoFocus={false}
         isOpen={isOpen}
-        placement="left"
+        placement="right"
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
         size="xs"
-        
       >
-        <DrawerContent overflow="scroll" >
+        <DrawerContent overflow="scroll">
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
@@ -169,15 +168,15 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Text fontSize="md" fontWeight="bold" mb="4">
             Filter By
           </Text>
-          <Box  textAlign={"start"} lineHeight="1" fontSize={"`xs`"}>
+          <Box textAlign={"start"} lineHeight="1" fontSize={"`xs`"}>
             <Text fontSize="xs" fontWeight="bold" mb="4">
               Availability
             </Text>
             <Stack spacing={5} direction="column">
-              <Checkbox  colorScheme="blue" defaultChecked>
+              <Checkbox colorScheme="blue" defaultChecked>
                 In Stock
               </Checkbox>
-              <Checkbox  colorScheme="blue" defaultChecked>
+              <Checkbox colorScheme="blue" defaultChecked>
                 Out of Stock
               </Checkbox>
             </Stack>
@@ -261,13 +260,14 @@ const MobileNav = ({ onOpen, ...rest }) => {
       display={"block"}
       borderBottomWidth="0px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent="flex-start"
+      justifyContent="end"
+      // border="1px solid red"
       {...rest}
     >
-      <Text onClick={onOpen} color="white">
-        Filters ➡️
-      </Text>
-      {/* <IconButton
+      {/* <Text onClick={onOpen} color="white">
+        Filters
+      </Text> */}
+      <IconButton
         w={5}
         h={5}
         variant={"ghost"}
@@ -275,7 +275,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         onClick={onOpen}
         aria-label="open menu"
         icon={<HamburgerIcon />}
-      /> */}
+      />
 
       {/* <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
         Logo

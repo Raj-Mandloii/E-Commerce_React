@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 
 
 export function formatPrice(value, opts = {}) {
-  const { locale = 'en-US', currency = 'USD' } = opts
+  const { locale = 'en-US', currency = 'INR' } = opts
   const formatter = new Intl.NumberFormat(locale, {
     currency,
     style: 'currency',
