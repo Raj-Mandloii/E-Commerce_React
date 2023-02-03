@@ -5,6 +5,8 @@ import {
   Button,
   Flex,
   Heading,
+  Image,
+  Skeleton,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -61,13 +63,16 @@ const MobileCard = ({ items }) => {
           pos={"relative"}
           zIndex={1}
         >
-          <Avatar
-            p="0"
-            ml="-2"
-            mr="6"
-            size="2xl"
-            name={items.title}
+          <Image
+          objectFit={"cover"}
+            w="8rem"
+            h='8rem'
+            mr="4"
             src={items.thumbnail}
+            alt={items.title}
+            draggable="false"
+            fallback={<Skeleton />}
+            borderRadius={{ base: "md", md: "xl" }}
           />
 
           <Flex
