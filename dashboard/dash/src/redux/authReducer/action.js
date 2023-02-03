@@ -1,12 +1,12 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "https://sore-lime-reindeer-toga.cyclic.app/api/";
 
 const register = (payload) => (dispatch) => {
   dispatch({ type: types.REGISTER_REQUEST });
   return axios
-    .post(baseUrl + "/user/register", payload)
+    .post(baseUrl + "user/register", payload)
     .then((r) => {
       return dispatch({ type: types.REGISTER_SUCCESS, payload: r.data });
     })
@@ -16,7 +16,7 @@ const register = (payload) => (dispatch) => {
 const login = (payload) => (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   return axios
-    .post(baseUrl + "/user/login", payload)
+    .post(baseUrl + "user/login", payload)
     .then((r) => {
       return dispatch({
         type: types.LOGIN_SUCCESS,

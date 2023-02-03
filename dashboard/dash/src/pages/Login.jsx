@@ -18,41 +18,50 @@ import {
   Input,
   Stack,
   Text,
-  Image,
+  useToast,
 } from "@chakra-ui/react";
 
 import { OAuthButtonGroup } from "../components/OAuthButtonGroup";
 import { PasswordField } from "../components/PasswordField";
+import customToast from "../components/customToast/toast";
 
 const Login = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const loginsuccess = () => toast("Login successful");
-  // const loginfail = () => toast("Login failed, Please try again later.");
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const navigate = useNavigate();
 
-  // const [values, setValues] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-  // const handleChange = (e) => {
-  //   setValues({ ...values, [e.target.name]: e.target.value });
-  // };
-  // const handleSignup = () => {
-  //   try {
-  //     if (values.email && values.password) {
-  //       console.log(values);
-  //       dispatch(login(values)).then((r) => {
-  //         if (r.type === types.LOGIN_SUCCESS) {
-  //           loginsuccess();
-  //           navigate("/", { replace: true });
-  //         } else if (r.type === types.LOGIN_FAILURE) {
-  //           console.log("Login is failed, please try again");
-  //           loginfail();
-  //         }
-  //       });
-  //     }
-  //   } catch (e) {}
-  // };
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+  const handleSignup = () => {
+    try {
+      if (values.email && values.password) {
+        console.log(values);
+        dispatch(login(values)).then((r) => {
+          if (r.type === types.LOGIN_SUCCESS) {
+            customToast({
+              toast: toast,
+              title: "Login successful",
+              message: "Redirecting.. to Home Page",
+              status: "success",
+            });
+            navigate("/", { replace: true });
+          } else if (r.type === types.LOGIN_FAILURE) {
+            customToast({
+              toast: toast,
+              title: "Login failed,",
+              message: "Please try again later.",
+              status: "error",
+            });
+          }
+        });
+      }
+    } catch (e) {}
+  };
   return (
     <Container
       maxW="lg"
@@ -64,9 +73,9 @@ const Login = () => {
           {/* <Logo /> */}
           {/* <Image src="./assets/logo" alt="logo"/> */}
           <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-          <Heading fontSize={"4xl"} textAlign={"center"}>
-            Log in
-          </Heading>
+            <Heading fontSize={"4xl"} textAlign={"center"}>
+              Log in
+            </Heading>
             <HStack spacing="1" justify="center">
               <Text color="muted">Don't have an account?</Text>
               <NavLink to="/signup">
@@ -88,9 +97,14 @@ const Login = () => {
             <Stack spacing="5">
               <FormControl>
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input id="email" type="email" />
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                />
               </FormControl>
-              <PasswordField />
+              <PasswordField onChange={handleChange} name="password" />
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
@@ -107,6 +121,7 @@ const Login = () => {
                 _hover={{
                   bg: "blue.500",
                 }}
+                onClick={handleSignup}
               >
                 Sign in
               </Button>
