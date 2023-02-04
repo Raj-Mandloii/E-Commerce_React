@@ -1,0 +1,595 @@
+[
+  {
+    "id": 1,
+    "thumbnail": "https://example.com/hp-laptop-1-thumbnail.jpg",
+    "image": "https://example.com/hp-laptop-1.jpg",
+    "title": "HP Pavilion x360 14-inch Touchscreen Laptop",
+    "price": 799.99,
+    "description": "The HP Pavilion x360 is a versatile laptop with a 14-inch touchscreen display, 8th generation Intel Core processor, and long battery life.",
+    "rating": 4.5,
+    "category": "Laptops",
+    "brand": "HP"
+  },
+  {
+    "id": 2,
+    "thumbnail": "https://example.com/hp-laptop-2-thumbnail.jpg",
+    "image": "https://example.com/hp-laptop-2.jpg",
+    "title": "HP Spectre x360 13-inch Touchscreen Laptop",
+    "price": 1299.99,
+    "description": "The HP Spectre x360 is a premium laptop with a 13-inch touchscreen display, 11th generation Intel Core processor, and sleek design.",
+    "rating": 4.9,
+    "category": "Laptops",
+    "brand": "HP"
+  },
+  {
+    "id": 3,
+    "thumbnail": "https://example.com/hp-laptop-3-thumbnail.jpg",
+    "image": "https://example.com/hp-laptop-3.jpg",
+    "title": "HP Omen 15-inch Gaming Laptop",
+    "price": 1499.99,
+    "description": "The HP Omen is a high-performance gaming laptop with a 15-inch display, powerful graphics card, and fast processor.",
+    "rating": 4.7,
+    "category": "Laptops",
+    "brand": "HP"
+  },
+  {
+    "id": 4,
+    "thumbnail": "https://example.com/hp-laptop-4-thumbnail.jpg",
+    "image": "https://example.com/hp-laptop-4.jpg",
+    "title": "HP Envy 17-inch Touchscreen Laptop",
+    "price": 999.99,
+    "description": "The HP Envy is a large touchscreen laptop with a 17-inch display, 9th generation Intel Core processor, and fast graphics card.",
+    "rating": 4.6,
+    "category": "Laptops",
+    "brand": "HP"
+  },
+  {
+    "id": 5,
+    "thumbnail": "https://example.com/hp-laptop-5-thumbnail.jpg",
+    "image": "https://example.com/hp-laptop-5.jpg",
+    "title": "HP Chromebook 11-inch Laptop",
+    "price": 249.99,
+    "description": "The HP Chromebook is a lightweight laptop with an 11-inch display, running on the Chrome operating system.",
+    "rating": 4.2,
+    "category": "Laptops",
+    "brand": "HP"
+  }
+]
+
+
+// {
+//     "category": "aps",
+//     "next_page": 2,
+//     "products": [
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B087623TMW",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "399.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.6,
+//           "total_reviews": 73
+//         },
+//         "score": "335.80",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/810DvHOZ9nL._AC_UL320_.jpg",
+//         "title": "New Apple iPhone SE (64GB, (Product) RED) [Locked] + Cricket Wireless Plan",
+//         "url": "https://www.amazon.com/dp/B087623TMW"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B01N2K14U7",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "199.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 3.7,
+//           "total_reviews": 146
+//         },
+//         "score": "540.20",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/61+fbdrjtCL._AC_UY218_.jpg",
+//         "title": "Simple Mobile Prepaid - Apple iPhone 7 (32GB) - Black [Locked to Carrier – Simple Mobile]",
+//         "url": "https://www.amazon.com/dp/B01N2K14U7"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B084GT2B5C",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "699.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.2,
+//           "total_reviews": 25
+//         },
+//         "score": "105.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/71Z8C1zRgAL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 11 (64GB, Yellow) [Locked] + Cricket Wireless Plan",
+//         "url": "https://www.amazon.com/dp/B084GT2B5C"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07P6Y7954",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "447.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.5,
+//           "total_reviews": 8430
+//         },
+//         "score": "37935.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/81FyKX6ml6L._AC_UY218_.jpg",
+//         "title": "Apple iPhone XR, 64GB, Black - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07P6Y7954"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B01N4R20RS",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "194.99",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 3.9,
+//           "total_reviews": 17015
+//         },
+//         "score": "66358.50",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/41ZtfBP1C6L._AC_UY218_.jpg",
+//         "title": "Apple iPhone 7, 32GB, Black - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B01N4R20RS"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07ZPKR714",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "849.99",
+//           "currency": "USD",
+//           "current_price": "710.00",
+//           "discounted": true,
+//           "savings_amount": "139.99",
+//           "savings_percent": "6.07"
+//         },
+//         "reviews": {
+//           "rating": 4.5,
+//           "total_reviews": 327
+//         },
+//         "score": "1471.50",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/51GUjMAFDbL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 11, 128GB, Black - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07ZPKR714"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07YYM3HFW",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "449.99",
+//           "currency": "USD",
+//           "current_price": "380.00",
+//           "discounted": true,
+//           "savings_amount": "69.99",
+//           "savings_percent": "6.43"
+//         },
+//         "reviews": {
+//           "rating": 4.4,
+//           "total_reviews": 5751
+//         },
+//         "score": "25304.40",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/616deySCZpL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 8 Plus, 64GB, Space Gray - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07YYM3HFW"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07ZQRMWVB",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": 0,
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.4,
+//           "total_reviews": 134
+//         },
+//         "score": "589.60",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/61vflt1U5gL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 11 Pro, 64GB, Midnight Green - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07ZQRMWVB"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07KFMTWVF",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "597.29",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.4,
+//           "total_reviews": 2755
+//         },
+//         "score": "12122.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/71isxv6Wd-L._AC_UY218_.jpg",
+//         "title": "Apple iPhone XS Max, 64GB, Gold - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07KFMTWVF"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B077578W38",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "431.83",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.2,
+//           "total_reviews": 3854
+//         },
+//         "score": "16186.80",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/719knfTwPvL._AC_UY218_.jpg",
+//         "title": "Apple iPhone X, 64GB, Space Gray - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B077578W38"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07Z4681LQ",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "1,259.99",
+//           "currency": "USD",
+//           "current_price": "1,069.99",
+//           "discounted": true,
+//           "savings_amount": "NaN",
+//           "savings_percent": "NaN"
+//         },
+//         "reviews": {
+//           "rating": 4.1,
+//           "total_reviews": 150
+//         },
+//         "score": "615.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/61GggH1hAaL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 11 Pro Max, 256GB, Midnight Green, Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07Z4681LQ"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07XSQT4Q3",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "1,099.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 3.2,
+//           "total_reviews": 78
+//         },
+//         "score": "249.60",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/81mxun+6pEL._AC_UY218_.jpg",
+//         "title": "Simple Mobile Prepaid - Apple iPhone 11 Pro Max (64GB) - Midnight Green [Locked to Carrier – Simple Mobile]",
+//         "url": "https://www.amazon.com/dp/B07XSQT4Q3"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07XLGM7L1",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "699.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 3.1,
+//           "total_reviews": 107
+//         },
+//         "score": "331.70",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/715HCLsOHbL._AC_UY218_.jpg",
+//         "title": "Simple Mobile Prepaid - Apple iPhone 11 (64GB) - (Product) Red [Locked to Carrier – Simple Mobile]",
+//         "url": "https://www.amazon.com/dp/B07XLGM7L1"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07SC58QBW",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "509.99",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.3,
+//           "total_reviews": 2476
+//         },
+//         "score": "10646.80",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/71XeQzRDyML._AC_UY218_.jpg",
+//         "title": "Apple iPhone XS, 64GB, Space Gray - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07SC58QBW"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B088NQXD8T",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "374.97",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 3,
+//           "total_reviews": 2
+//         },
+//         "score": "6.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/81K+adaNRiL._AC_UY218_.jpg",
+//         "title": "Apple iPhone SE, 64GB, Black - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B088NQXD8T"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B081TLRQ9H",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "344.00",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4.1,
+//           "total_reviews": 7675
+//         },
+//         "score": "31467.50",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/71b4kAq+5QL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 7 Plus, 128GB, Black - Fully Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B081TLRQ9H"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07HKQ61NV",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "269.99",
+//           "currency": "USD",
+//           "current_price": "239.99",
+//           "discounted": true,
+//           "savings_amount": "30.00",
+//           "savings_percent": "9.00"
+//         },
+//         "reviews": {
+//           "rating": 4.3,
+//           "total_reviews": 489
+//         },
+//         "score": "2102.70",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/71aOr1CuM1L._AC_UY218_.jpg",
+//         "title": "Apple iPhone 8 a1905 64GB LTE GSM Unlocked (Renewed)",
+//         "url": "https://www.amazon.com/dp/B07HKQ61NV"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B0731HBTZ7",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "197.98",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 4,
+//           "total_reviews": 1716
+//         },
+//         "score": "6864.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/51cRE43zKwL._AC_UY218_.jpg",
+//         "title": "Apple iPhone 7 32GB, Rose Gold (Renewed)",
+//         "url": "https://www.amazon.com/dp/B0731HBTZ7"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B07K97BQDF",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "599.99",
+//           "currency": "USD",
+//           "current_price": "449.00",
+//           "discounted": true,
+//           "savings_amount": "150.99",
+//           "savings_percent": "3.97"
+//         },
+//         "reviews": {
+//           "rating": 3.7,
+//           "total_reviews": 87
+//         },
+//         "score": "321.90",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/611nmTRjpcL._AC_UY218_.jpg",
+//         "title": "Simple Mobile Prepaid - Apple iPhone XR (64GB) - Red [Locked to Carrier – Simple Mobile]",
+//         "url": "https://www.amazon.com/dp/B07K97BQDF"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B08CXQZFW7",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "39.97",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 5,
+//           "total_reviews": 28
+//         },
+//         "score": "140.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/51kLgv1Hy6L._AC_UY218_.jpg",
+//         "title": "Wireless Earbuds Bluetooth 5.0 Headphones 3D Stereo Noise Canceling Headset Auto Paring Sport Bluetooth Earbuds with Fast Charging Case for Apple AirPods pro iPhone Android in-Ear Earphones",
+//         "url": "https://www.amazon.com/dp/B08CXQZFW7"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": true,
+//         "asin": "B08G8KX1GZ",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": 0,
+//           "currency": "USD",
+//           "current_price": "39.98",
+//           "discounted": false,
+//           "savings_amount": 0,
+//           "savings_percent": 0
+//         },
+//         "reviews": {
+//           "rating": 5,
+//           "total_reviews": 9
+//         },
+//         "score": "45.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/61HUlvqt2IL._AC_UY218_.jpg",
+//         "title": "Wireless Earbuds Bluetooth 5.0 Headphones CVC8.0 Noise Canceling Bluetooth Headphones in-Ear 3D Stereo Headset with Fast Charging Case for iPhone/Samsung/Android AirPods Pro Apple Earbuds",
+//         "url": "https://www.amazon.com/dp/B08G8KX1GZ"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07YXZTLLT",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "25.99",
+//           "currency": "USD",
+//           "current_price": "21.99",
+//           "discounted": true,
+//           "savings_amount": "4.00",
+//           "savings_percent": "6.50"
+//         },
+//         "reviews": {
+//           "rating": 4.2,
+//           "total_reviews": 680
+//         },
+//         "score": "2856.00",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/815Ft7CdvPL._AC_UY218_.jpg",
+//         "title": "Wireless Earbuds Bluetooth Headphones Mini Bluetooth Earbuds Super Bass Wireless Headset with LED Power Display Charging Case, Built-in Microphone, Sport in-Ear Ear Buds with Charging Case",
+//         "url": "https://www.amazon.com/dp/B07YXZTLLT"
+//       },
+//       {
+//         "amazonChoice": false,
+//         "amazonPrime": false,
+//         "asin": "B07Z1YH1WD",
+//         "bestSeller": false,
+//         "price": {
+//           "before_price": "9.99",
+//           "currency": "USD",
+//           "current_price": "7.99",
+//           "discounted": true,
+//           "savings_amount": "2.00",
+//           "savings_percent": "5.00"
+//         },
+//         "reviews": {
+//           "rating": 3.8,
+//           "total_reviews": 252
+//         },
+//         "score": "957.60",
+//         "sponsored": false,
+//         "thumbnail": "https://m.media-amazon.com/images/I/51yjoG3P24L._AC_UY218_.jpg",
+//         "title": "Headphone Adapter 3.5mm Jack Adapter Charger for iPhone 11/11 Pro/8/8Plus/7/7Plus/X/10/Xs/Xs Max 2 in 1 Earphone Audio Connector Music Splitter Cable Accessories for All iOS System",
+//         "url": "https://www.amazon.com/dp/B07Z1YH1WD"
+//       }
+//     ],
+//     "totalProducts": "1809"
+//   }

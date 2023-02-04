@@ -3,12 +3,26 @@ import axios from "axios";
 
 const baseUrl = "https://sore-lime-reindeer-toga.cyclic.app/api/";
 
-const getProduct = (query) => (dispatch) => {
+const getProduct = () => (dispatch) => {
   dispatch({ type: type.REQUEST });
 
   return axios
-    .get(baseUrl + "product?limit=20", query)
+    .get(baseUrl + "product?limit=20")
     .then((r) => {
+      return dispatch({ type: type.SUCCESS, payload: r.data });
+    })
+    .catch((e) => {
+      return dispatch({ type: type.FAILURE });
+    });
+};
+
+const getSingleProduct = (id) => (dispatch) => {
+  dispatch({ type: type.REQUEST });
+
+  return axios
+    .get(baseUrl + "product/", id)
+    .then((r) => {
+      console.log("Single Product", r.data);
       return dispatch({ type: type.SUCCESS, payload: r.data });
     })
     .catch((e) => {
@@ -30,4 +44,4 @@ const getProduct = (query) => (dispatch) => {
 //     })
 // }
 
-export { getProduct };
+export { getProduct, getSingleProduct };
