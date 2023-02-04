@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import { ProductCard } from "./ProductCard";
-import { products } from "./_data";
 import { ProductGrid } from "./ProductGrid";
 import LoadingIndicator from "../LoadingIndicator";
 import { NavLink } from "react-router-dom";

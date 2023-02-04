@@ -23,6 +23,7 @@ import { getProduct } from "../redux/appReducer/action";
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import LoadingIndicator from "./LoadingIndicator";
+import { addToCart } from "../redux/appReducer/cartAction";
 // Carousel is using this style internally ^_^
 
 export default function ProductDetails() {
@@ -42,27 +43,7 @@ export default function ProductDetails() {
       dispatch(getProduct());
     }
   }, []);
-  //   {
-  //     generate data of hp laptops with following keys
-  // id, thumbnail, image, title, price, description, rating, category, brand
-  //     "sold": 0,
-  //     "color": [],
-  //     "totalrating": "0",
-  //     "_id": "63d4e2bf213e880d9511d1de",
-  //     "id": 18,
-  //     "title": "Oil Free Moisturizer 100ml",
-  //     "description": "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
-  //     "price": 40,
-  //     "discountPercentage": 13.1,
-  //     "rating": 4.56,
-  //     "stock": 88,
-  //     "brand": "Dermive",
-  //     "category": "skincare",
-  //     "thumbnail": "https://i.dummyjson.com/data/products/18/thumbnail.jpg",
-  //     "image": "https://i.dummyjson.com/data/products/18/1.jpg",
-  //     "images": [],
-  //     "ratings": []
-  // }
+
   useEffect(() => {
     if (id) {
       const currentItem = featuredCollectionData.find((el) => el.id == id);
@@ -70,6 +51,12 @@ export default function ProductDetails() {
       currentItem && setCurrentItem(currentItem);
     }
   }, [id, featuredCollectionData]);
+
+  const addItemsToCart = () => {
+    dispatch(addToCart(currentItem, 1));
+    // navigate("/cart");
+  };
+
   return loading ? (
     <LoadingIndicator topMargin={10} />
   ) : (
@@ -80,7 +67,7 @@ export default function ProductDetails() {
         py={{ base: 18, md: 24 }}
       >
         <Flex>
-          <Carousel autoPlay infiniteLoop showThumbs={true}>
+          <Carousel autoPlay infiniteLoop showThumbs={false}>
             <Image
               rounded={"md"}
               alt={currentItem.title}
@@ -244,6 +231,7 @@ export default function ProductDetails() {
                 transform: "translateY(2px)",
                 boxShadow: "lg",
               }}
+              onClick={addItemsToCart}
             >
               Add to cart
             </Button>

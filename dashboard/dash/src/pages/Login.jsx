@@ -40,7 +40,7 @@ const Login = () => {
   const handleSignup = () => {
     try {
       if (values.email && values.password) {
-        console.log(values);
+        // console.log(values);
         dispatch(login(values)).then((r) => {
           if (r.type === types.LOGIN_SUCCESS) {
             customToast({

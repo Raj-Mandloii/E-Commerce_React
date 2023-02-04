@@ -1,59 +1,73 @@
-import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
-import { PriceTag } from './PriceTag'
-import { CartProductMeta } from './CartProductMeta'
-
-
+import {
+  CloseButton,
+  Flex,
+  Link,
+  Select,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { PriceTag } from "./PriceTag";
+import { CartProductMeta } from "./CartProductMeta";
 
 const QuantitySelect = (props) => {
   return (
     <Select
       maxW="64px"
       aria-label="Select quantity"
-      focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
+      focusBorderColor={useColorModeValue("blue.500", "blue.200")}
       {...props}
     >
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
+      <option value="4">5</option>
     </Select>
-  )
-}
-const IMAGE =
-  "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1656712887881";
+  );
+};
 
 export const CartItem = (props) => {
   const {
-    isGiftWrapping,
-    name,
+    id,
+    title,
+    price,
     description,
     quantity,
-    imageUrl,
-    currency,
-    price,
+    thumbnail,
+    image,
     onChangeQuantity,
     onClickDelete,
-  } = props
+  } = props;
 
   return (
-    <Flex direction={{ base: 'column', md: 'row' }} justify="space-between" align="center">
+    <Flex
+      direction={{ base: "column", md: "row" }}
+      justify="space-between"
+      align="center"
+    >
       <CartProductMeta
-        name={name}
+        name={title}
         description={description}
-        image={IMAGE}
-        isGiftWrapping={isGiftWrapping}
+        image={thumbnail}
+        isGiftWrapping={true}
       />
 
       {/* Desktop */}
-      <Flex width="full" justify="space-between" display={{ base: 'none', md: 'flex' }}>
+      <Flex
+        width="full"
+        justify="space-between"
+        display={{ base: "none", md: "flex" }}
+      >
         <QuantitySelect
           value={quantity}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
+            onChangeQuantity?.(+e.currentTarget.value,+id);
           }}
         />
-        <PriceTag price={price} currency={currency} />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={onClickDelete} />
+        <PriceTag price={price} currency={"INR"} />
+        <CloseButton
+          aria-label={`Delete ${title} from cart`}
+          onClick={()=> onClickDelete(id)}
+        />
       </Flex>
 
       {/* Mobile */}
@@ -62,7 +76,7 @@ export const CartItem = (props) => {
         align="center"
         width="full"
         justify="space-between"
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: "flex", md: "none" }}
       >
         <Link fontSize="sm" textDecor="underline">
           Delete
@@ -70,11 +84,11 @@ export const CartItem = (props) => {
         <QuantitySelect
           value={quantity}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
+            onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-        <PriceTag price={price} currency={currency} />
+        <PriceTag price={price} currency={"INR"} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};
