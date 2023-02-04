@@ -18,19 +18,24 @@ import {
 export const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  console.log(cartItems)
+
   let totalPrice = cartItems.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0);
-  // console.log(`Total price: ${totalPrice}`)
+  
+
   const onChangeQuantity = (newQuantity, itemId) => {
-    dispatch(changeQuantity(newQuantity,itemId));
+    console.log(newQuantity, itemId)
+    dispatch(changeQuantity(newQuantity, itemId));
   };
 
+
   const onClickDelete = (id, item) => {
-    console.log("THIS IS DELETE THING");
-    console.log(id);
     dispatch(removedFromCart(id));
   };
+
+
   return (
     <Box
       maxW={{ base: "3xl", lg: "7xl" }}

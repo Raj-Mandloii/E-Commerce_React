@@ -18,11 +18,10 @@ const ProductList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // console.log("getting");
-    // if (featuredCollectionData.length === 0) {
-    dispatch(getProduct());
-    // console.log(loading);
-
-    // }
+    if (featuredCollectionData.length === 0) {
+      dispatch(getProduct());
+       console.log("FETCHING THE DATA ");
+    }
   }, []);
   return (
     <Box w="100%">
@@ -35,7 +34,7 @@ const ProductList = () => {
       ) : (
         featuredCollectionData.map((el) => (
           // <NavLink to={`/${el.id}`}>
-            <MobileCard key={el.id} items={el} />
+          <MobileCard key={el.id} items={el} />
           // </NavLink>
         ))
       )}

@@ -7,27 +7,28 @@ export const cartReducer = (state = { cartItems }, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const item = action.payload;
+      console.log("THIS IS ITEM", item);
       const existItem = state.cartItems.find(
         (product) => product.id === item.id
       );
 
       if (existItem) {
+        console.log("ITEM ALREADY exists");
         let id = existItem.id;
-        console.log(id);
-       let a = state.cartItems.map((el) => {
-          if (el.id === id) {
-            console.log("THE KEY IS MATCHING ")
-            // return (el.quantity = ++el.quantity);
-            return {...el, quantity: ++el.quantity};
+        state.cartItems.forEach((el) => {
+          if (el.id == id) {
+            return (el.quantity = el.quantity + 1);
           }
           return el;
         });
-        console.log("NEW STATE",a)
-         saveLocalData("e-shop-cart", [...a]);
+
+        saveLocalData("e-shop-cart", [...state.cartItems]);
       } else {
+        item.quantity = 1;
         saveLocalData("e-shop-cart", [...state.cartItems, item]);
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+      break;
     case actionTypes.CHANGE_QUANTITY:
       const { id, quantity } = action.payload;
       console.log("NEW QUATITY ::", quantity);
@@ -39,12 +40,9 @@ export const cartReducer = (state = { cartItems }, action) => {
       });
 
       saveLocalData("e-shop-cart", [...state.cartItems]);
-    // }
-    // else {
-    //   saveLocalData("e-shop-cart", [...state.cartItems, item]);
-    //   return { ...state, cartItems: [...state.cartItems, item] };
-    // }
-
+      return {...state, cartItems: [...state.cartItems]}
+      
+      break;
     case actionTypes.REMOVE_FROM_CART:
       saveLocalData(
         "e-shop-cart",

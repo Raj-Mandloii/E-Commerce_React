@@ -53,7 +53,7 @@ export default function ProductDetails() {
   }, [id, featuredCollectionData]);
 
   const addItemsToCart = () => {
-    dispatch(addToCart(currentItem, 1));
+    dispatch(addToCart(currentItem));
     // navigate("/cart");
   };
 
