@@ -14,9 +14,9 @@ export const Card = ({ data, loading, error }) => (
   >
     <ProductGrid>
       {data.map((product) => (
-        <NavLink to={`/${product.id}`}>
+        // <NavLink to={`/${product.id}`}>
           <ProductCard key={product.id} product={product} />
-        </NavLink>
+        // </NavLink>
       ))}
     </ProductGrid>
   </Box>

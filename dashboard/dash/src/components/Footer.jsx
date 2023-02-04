@@ -48,9 +48,9 @@ const SocialButton = ({ children, label, href }) => {
       alignItems={"center"}
       justifyContent={"center"}
       transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
+      // _hover={{
+      //   bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
+      // }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
@@ -133,9 +133,9 @@ export default function Footer() {
               <IconButton
                 bg={useColorModeValue("green.400", "green.800")}
                 color={useColorModeValue("white", "gray.800")}
-                _hover={{
-                  bg: "green.600",
-                }}
+                // _hover={{
+                //   bg: "green.600",
+                // }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
               />

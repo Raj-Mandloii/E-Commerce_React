@@ -5,6 +5,7 @@ import MobileCard from "./MobileCard";
 import { getProduct } from "../redux/appReducer/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import LoadingIndicator from "./LoadingIndicator";
+import { NavLink } from "react-router-dom";
 const ProductList = () => {
   const { loading, featuredCollectionData, error } = useSelector((store) => {
     return {
@@ -33,12 +34,14 @@ const ProductList = () => {
         <LoadingIndicator topMargin={10} />
       ) : (
         featuredCollectionData.map((el) => (
-          <MobileCard key={el.id} items={el} />
+          // <NavLink to={`/${el.id}`}>
+            <MobileCard key={el.id} items={el} />
+          // </NavLink>
         ))
       )}
 
       {/* MEDIUM TO LARGE SCREEN */}
-      <Card data={featuredCollectionData} loading={loading} error={error}/>
+      <Card data={featuredCollectionData} loading={loading} error={error} />
     </Box>
   );
 };

@@ -31,36 +31,28 @@ const MobileCard = ({ items }) => {
     return dd + "-" + mm + "-" + yyyy;
   };
   return (
-    <NavLink to="/:id">
-      <Box
+    <Box
+      display={{ base: "block", md: "none" }}
+      w="100%"
+      textAlign={"center"}
+      // m="2"
+      mt="16"
+      columnGap="4"
+      position="relative"
+    >
+      <Flex
         // border="1px solid red"
-        // position="relative"
-        display={{ base: "block", md: "none" }}
+        alignItems={"center"}
+        role={"group"}
         w="100%"
-        textAlign={"center"}
-        // m="2"
-        mt="16"
-        columnGap="4"
+        p="6"
+        bg={useColorModeValue("white", "gray.800")}
+        boxShadow={"lg"}
+        rounded={"2xl"}
+        pos={"relative"}
+        zIndex={1}
       >
-        {/* <FavouriteButton
-          position="absolute"
-          top="2"
-          right="2"
-          aria-label={`Add ${name} to your favourites`}
-        /> */}
-        <Flex
-          // border="1px solid red"
-          position="relative"
-          alignItems={"center"}
-          role={"group"}
-          w="100%"
-          p="6"
-          bg={useColorModeValue("white", "gray.800")}
-          boxShadow={"lg"}
-          rounded={"2xl"}
-          pos={"relative"}
-          zIndex={1}
-        >
+        <NavLink to={`/${items.id}`}>
           <Avatar
             p="0"
             ml="-2"
@@ -70,7 +62,8 @@ const MobileCard = ({ items }) => {
             src={items.thumbnail}
             fallback={<Skeleton />}
           />
-
+        </NavLink>
+        <NavLink to={`/${items.id}`}>
           <Flex
             // border="1px solid red"
             direction={"column"}
@@ -101,7 +94,11 @@ const MobileCard = ({ items }) => {
             >
               Limited Time Deal
             </Box>
-            <PriceTag price={items.price+20} salePrice={items.price} currency="INR" />
+            <PriceTag
+              price={items.price + 20}
+              salePrice={items.price}
+              currency="INR"
+            />
             <Text color="gray" fontSize={"xs"} mt="1" mr="1">
               Get it by {futureDate()}
             </Text>
@@ -109,15 +106,16 @@ const MobileCard = ({ items }) => {
               FREE Delivery by E-Shop
             </Text>
           </Flex>
-          <FavouriteButton
-            position="absolute"
-            top={"-2"}
-            right="2"
-            aria-label={`Add ${items.title} to your favourites`}
-          />
-        </Flex>
-      </Box>
-    </NavLink>
+        </NavLink>
+        <FavouriteButton
+          
+          position="absolute"
+          top={"-2"}
+          right="2"
+          aria-label={`Add ${items.title} to your favourites`}
+        />
+      </Flex>
+    </Box>
   );
 };
 

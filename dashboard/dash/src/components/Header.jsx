@@ -125,9 +125,9 @@ export default function WithSubnavigation() {
         >
           {token ? (
             <Flex
-              _hover={{
-                color: "gray.500",
-              }}
+              // _hover={{
+              //   color: "gray.500",
+              // }}
               w="100px"
               color={"white"}
               fontSize="xs"
@@ -151,10 +151,10 @@ export default function WithSubnavigation() {
                 mr="4"
                 mt="1"
                 ml="4"
-                _hover={{
-                  textDecor: "underline",
-                  color: "gray.500",
-                }}
+                // _hover={{
+                //   textDecor: "underline",
+                //   color: "gray.500",
+                // }}
               >
                 Sign in
               </Button>
@@ -214,10 +214,10 @@ const DesktopNav = () => {
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
+                // _hover={{
+                //   textDecoration: "none",
+                //   color: linkHoverColor,
+                // }}
               >
                 {navItem.label}
               </Link>
@@ -254,7 +254,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      // _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
@@ -308,9 +308,9 @@ const MobileNavItem = ({ label, children, href }) => {
         href={href ?? "#"}
         justify={"space-between"}
         align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
+        // _hover={{
+        //   textDecoration: "none",
+        // }}
       >
         <Text
           fontWeight={600}
@@ -382,10 +382,10 @@ const NAV_ITEMS = [
     //   },
     // ],
   },
-  {
-    label: "Your Wishlist",
-    href: "/wishlist",
-  },
+  // {
+  //   label: "Your Wishlist",
+  //   href: "/wishlist",
+  // },
   // {
   //   label: "Hire Designers",
   //   href: "#",

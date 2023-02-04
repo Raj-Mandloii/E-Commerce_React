@@ -21,7 +21,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../redux/appReducer/action";
 import { Carousel } from "react-responsive-carousel";
-import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
+import  "react-responsive-carousel/lib/styles/carousel.min.css";
 import LoadingIndicator from "./LoadingIndicator";
 import { addToCart } from "../redux/appReducer/cartAction";
 // Carousel is using this style internally ^_^
@@ -58,7 +58,9 @@ export default function ProductDetails() {
   };
 
   return loading ? (
-    <LoadingIndicator topMargin={10} />
+    <Box mb="10">
+      <LoadingIndicator topMargin={10} />
+    </Box>
   ) : (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -213,45 +215,32 @@ export default function ProductDetails() {
               </List>
             </Box> */}
           </Stack>
-          <SimpleGrid
-            columns={{ base: 1, md: 2 }}
-            spacing={10}
+          <Flex
+            w="100%"
+            direction={{ base: "column", md: "row", sm: "column" }}
+            gap={5}
+            align={["none", "center"]}
+            justifyContent="space-evenly"
             fontWeight="bold"
           >
             <Button
-              rounded={"3xl"}
-              w={"full"}
-              mt={8}
-              size={"sm"}
-              py={"7"}
+              fontSize={"xs"}
               bg={useColorModeValue("blue.300", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
               textTransform={"uppercase"}
-              _hover={{
-                transform: "translateY(2px)",
-                boxShadow: "lg",
-              }}
               onClick={addItemsToCart}
             >
               Add to cart
             </Button>
             <Button
-              rounded={"3xl"}
-              w={"full"}
-              mt={8}
-              size={"sm"}
-              py={"7"}
+              fontSize={"xs"}
               bg={useColorModeValue("blue.300", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
               textTransform={"uppercase"}
-              _hover={{
-                transform: "translateY(2px)",
-                boxShadow: "lg",
-              }}
             >
               Buy It Now
             </Button>
-          </SimpleGrid>
+          </Flex>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />
