@@ -41,6 +41,7 @@ export default function WithSubnavigation() {
       token: store.authReducer.token,
     };
   });
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
   useEffect(() => {}, [token]);
 
   return (
@@ -74,17 +75,28 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex
           flex={{ base: 4 }}
-          ml='2'
+          ml="2"
           justify={{ base: "center", md: "start" }}
           //  border="1px solid red"
         >
           <NavLink to="/">
+            <Text
+              display={{ base: "none", md: "flex" }}
+              bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
+              bgClip="text"
+              fontSize="2xl"
+              fontWeight="extrabold"
+            >
+              {"<E-SHOP/>"}
+            </Text>
+          </NavLink>
+          {/* <NavLink to="/">
             <Image
               display={{ base: "none", md: "flex" }}
               w={["10", "8", "12"]}
               src={WebLogo}
             />
-          </NavLink>
+          </NavLink> */}
 
           <Flex
             display={{ base: "flex", md: "none" }}
@@ -114,7 +126,7 @@ export default function WithSubnavigation() {
           </Flex>
         </Flex>
         <Flex display={{ base: "none", md: "flex" }} ml={10}>
-          <DesktopNav />
+          <DesktopNav cartItems={cartItems} />
         </Flex>
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -133,7 +145,7 @@ export default function WithSubnavigation() {
               fontSize="xs"
               alignItems={"center"}
               mt="0"
-              ml='4'
+              ml="4"
             >
               <FiUser px="4" size={"32"} />
               <Flex direction={"column"}>
@@ -144,7 +156,7 @@ export default function WithSubnavigation() {
           ) : (
             <NavLink to="/login">
               <Button
-                color="gray.200"
+                color="gray.500"
                 variant={"outline"}
                 fontSize={"xs"}
                 fontWeight={600}
@@ -197,7 +209,7 @@ export default function WithSubnavigation() {
   );
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ cartItems }) => {
   const linkColor = useColorModeValue("gray.200", "gray.200");
   const linkHoverColor = useColorModeValue("gray.500", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -205,21 +217,30 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
+        <Box key={navItem.label} >
+          <Popover trigger={"hover"} placement={"bottom-start"} >
             <PopoverTrigger>
               <Link
+              
                 p={2}
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 color={linkColor}
-                // _hover={{
-                //   textDecoration: "none",
-                //   color: linkHoverColor,
-                // }}
+                
               >
-                {navItem.label}
+                <Box mt="4" display={"flex"} position={"relative"}>
+                  <Image
+                    display={{ base: "none", md: "flex" }}
+                    w={["10", "4", "8"]}
+                    src={WebLogo}
+                    mr="4"
+                  />
+                  <Text position={"absolute"} right="3" top="-3">
+                    {cartItems.length}
+                  </Text>
+                </Box>
+                {/* {navItem.label} */}
               </Link>
             </PopoverTrigger>
 

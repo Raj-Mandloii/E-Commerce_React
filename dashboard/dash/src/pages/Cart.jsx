@@ -1,11 +1,14 @@
 import {
   Box,
+  Button,
   Flex,
   Heading,
   HStack,
   Stack,
+  Text,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
+import {  FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { CartItem } from "../components/CartItem";
@@ -18,23 +21,20 @@ import {
 export const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  console.log(cartItems)
+  // console.log(cartItems);
 
   let totalPrice = cartItems.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0);
-  
 
   const onChangeQuantity = (newQuantity, itemId) => {
-    console.log(newQuantity, itemId)
+    // console.log(newQuantity, itemId)
     dispatch(changeQuantity(newQuantity, itemId));
   };
 
-
   const onClickDelete = (id, item) => {
-    dispatch(removedFromCart(id));
+    dispatch(removedFromCart(id)).then((_) => {});
   };
-
 
   return (
     <Box
@@ -49,10 +49,24 @@ export const Cart = () => {
         spacing={{ base: "8", md: "16" }}
       >
         <Stack spacing={{ base: "8", md: "10" }} flex="2">
-          <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart ({cartItems.length})
-          </Heading>
-
+          {cartItems.length !== 0 && (
+            <Heading fontSize="2xl" fontWeight="extrabold">
+              Shopping Cart ({cartItems.length})
+            </Heading>
+          )}
+          {cartItems.length === 0 && (
+            <Box h="40vh" textAlign={"center"}>
+              <Heading py="10" fontSize="2xl" fontWeight="extrabold">
+                Cart is Empty
+              </Heading>
+              {/* <FaCartPlus /> */}
+              <NavLink to="/">
+                <Button variant={"link"} color={mode("blue.500", "blue.200")}>
+                  Start Shopping and Add Items to Cart
+                </Button>
+              </NavLink>
+            </Box>
+          )}
           <Stack spacing="6">
             {cartItems.map((item) => (
               <CartItem
@@ -69,8 +83,10 @@ export const Cart = () => {
           <CartOrderSummary finalPrice={totalPrice} />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <NavLink to="/" color={mode("blue.500", "blue.200")}>
-              Continue shopping
+            <NavLink to="/">
+              <Button variant={"link"} color={mode("blue.500", "blue.200")}>
+                Continue shopping
+              </Button>
             </NavLink>
           </HStack>
         </Flex>

@@ -22,7 +22,7 @@ const OrderSummaryItem = (props) => {
   );
 };
 
-export const CartOrderSummary = ({finalPrice}) => {
+export const CartOrderSummary = ({ finalPrice }) => {
   return (
     <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
       <Heading size="md">Order Summary</Heading>
@@ -56,6 +56,7 @@ export const CartOrderSummary = ({finalPrice}) => {
       >
         Checkout
       </Button>
+      
     </Stack>
   );
 };

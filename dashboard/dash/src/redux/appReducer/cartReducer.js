@@ -7,13 +7,13 @@ export const cartReducer = (state = { cartItems }, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const item = action.payload;
-      console.log("THIS IS ITEM", item);
+      // console.log("THIS IS ITEM", item);
       const existItem = state.cartItems.find(
         (product) => product.id === item.id
       );
 
       if (existItem) {
-        console.log("ITEM ALREADY exists");
+        // console.log("ITEM ALREADY exists");
         let id = existItem.id;
         state.cartItems.forEach((el) => {
           if (el.id == id) {
@@ -31,7 +31,7 @@ export const cartReducer = (state = { cartItems }, action) => {
       break;
     case actionTypes.CHANGE_QUANTITY:
       const { id, quantity } = action.payload;
-      console.log("NEW QUATITY ::", quantity);
+      // console.log("NEW QUATITY ::", quantity);
       state.cartItems.forEach((el) => {
         if (el.id === id) {
           return (el.quantity = quantity);
@@ -40,8 +40,8 @@ export const cartReducer = (state = { cartItems }, action) => {
       });
 
       saveLocalData("e-shop-cart", [...state.cartItems]);
-      return {...state, cartItems: [...state.cartItems]}
-      
+      return { ...state, cartItems: [...state.cartItems] };
+
       break;
     case actionTypes.REMOVE_FROM_CART:
       saveLocalData(

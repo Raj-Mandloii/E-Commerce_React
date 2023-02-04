@@ -78,7 +78,7 @@ export const CartItem = (props) => {
         justify="space-between"
         display={{ base: "flex", md: "none" }}
       >
-        <Link fontSize="sm" textDecor="underline">
+        <Link fontSize="sm" textDecor="underline"  onClick={()=> onClickDelete(id)}>
           Delete
         </Link>
         <QuantitySelect

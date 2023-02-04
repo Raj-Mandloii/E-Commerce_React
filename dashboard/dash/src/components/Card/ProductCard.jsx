@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
@@ -16,13 +17,22 @@ import { PriceTag } from "./PriceTag";
 import { addToCart } from "../../redux/appReducer/cartAction";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import customToast from "../customToast/toast";
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
+  const toast = useToast()
   const dispatch = useDispatch();
   const { id, title, thumbnail, price, description, rating } = product;
   const addItemsToCart = () => {
-    dispatch(addToCart(product, 1));
+    dispatch(addToCart(product, 1)).then((_)=>{
+      customToast({
+        toast: toast,
+        title: "Cart",
+        message: "Item added to cart successfully",
+        status: "success",
+      });
+    })
     // navigate("/cart");
   };
   return (

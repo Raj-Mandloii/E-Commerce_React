@@ -14,6 +14,7 @@ import {
   List,
   ListItem,
   Skeleton,
+  useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { MdLocalShipping } from "react-icons/md";
@@ -21,13 +22,15 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../redux/appReducer/action";
 import { Carousel } from "react-responsive-carousel";
-import  "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import LoadingIndicator from "./LoadingIndicator";
 import { addToCart } from "../redux/appReducer/cartAction";
 // Carousel is using this style internally ^_^
+import customToast from "../components/customToast/toast";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const toast  = useToast()
   const dispatch = useDispatch();
   const [currentItem, setCurrentItem] = useState({});
   const { loading, featuredCollectionData, error } = useSelector((store) => {
@@ -53,7 +56,15 @@ export default function ProductDetails() {
   }, [id, featuredCollectionData]);
 
   const addItemsToCart = () => {
-    dispatch(addToCart(currentItem));
+    dispatch(addToCart(currentItem)).then((_)=>{
+      console.log("Added items to cart")
+     return customToast({
+        toast: toast,
+        title: "Cart",
+        message: "Item added to cart successfully",
+        status: "success",
+      });
+    })
     // navigate("/cart");
   };
 
