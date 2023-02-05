@@ -39,7 +39,7 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const query = useSelector((store) => store.sortFilterReducer.query)
+  const query = useSelector((store) => store.sortFilterReducer.query);
   const handleSearch = (q) => {
     dispatch(searchedQuery(q));
   };
@@ -116,9 +116,8 @@ export default function WithSubnavigation() {
               <Stack spacing={4} py="0" flex>
                 <InputGroup>
                   <Input
-                     value={query}
+                    value={query}
                     onChange={(e) => handleSearch(e.target.value)}
-                    // onChange={(e)=> dispatch(searchedQuery(e.target.value))}
                     placeholder="Search E-Shop"
                     color="gray.500"
                     bg="white"
@@ -177,10 +176,6 @@ export default function WithSubnavigation() {
                 mr="4"
                 mt="1"
                 ml="4"
-                // _hover={{
-                //   textDecor: "underline",
-                //   color: "gray.500",
-                // }}
               >
                 Sign in
               </Button>
@@ -198,6 +193,8 @@ export default function WithSubnavigation() {
           <Stack spacing={4} py="2" w={["80%", "60%", "60%"]} flex>
             <InputGroup>
               <Input
+                value={query}
+                onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search E-Shop"
                 color="gray.500"
                 bg="white"

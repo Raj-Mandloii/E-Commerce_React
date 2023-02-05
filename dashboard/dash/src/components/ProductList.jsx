@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Card } from "./Card/Card";
 import MobileCard from "./MobileCard";
 import { getProduct } from "../redux/appReducer/action";
@@ -15,7 +15,7 @@ const ProductList = () => {
     };
   }, shallowEqual);
 
-  const a = useSelector((store) => store.sortFilterReducer.query);
+  const query = useSelector((store) => store.sortFilterReducer.query);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,26 +26,24 @@ const ProductList = () => {
     // console.log("THIS IS RENDERING ",featuredCollectionData,a,loading,data)
   }, []);
 
+  const queryFilter = useMemo(() =>
+    featuredCollectionData.filter((user) =>
+      user.title.toLowerCase().includes(query.trim().toLowerCase())
+    )
+  );
   return (
     <Box w="100%">
-      {/* {!loading && (
-       <LoadingIndicator  topMargin={10}/>
-      )} */}
       {/* MOBILE SCREEN */}
       {loading ? (
         <LoadingIndicator topMargin={10} />
       ) : (
-        featuredCollectionData
-          .filter((user) =>
-            user.title.toLowerCase().includes(a.trim().toLowerCase())
-          )
-          .map((el) => {
-            return <MobileCard key={el.id} items={el} />;
-          })
+        queryFilter.map((el) => {
+          return <MobileCard key={el.id} items={el} />;
+        })
       )}
 
       {/* MEDIUM TO LARGE SCREEN */}
-      <Card data={featuredCollectionData} loading={loading} error={error} />
+      <Card data={featuredCollectionData} />
     </Box>
   );
 };
