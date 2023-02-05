@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
-// import { Link } from "react-router-dom";
-import { getProduct } from "../redux/appReducer/action";
-import { useDispatch, useSelector } from "react-redux";
-import { ReactNode } from "react";
+import React from "react";
 import {
   IconButton,
   Box,
-  CloseButton,
   Flex,
   Icon,
   useColorModeValue,
@@ -15,31 +10,14 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
-  UnorderedList,
-  ListItem,
-  Select,
   Radio,
   Checkbox,
   Stack,
   RadioGroup,
+  DrawerBody,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-} from "react-icons/fi";
-import { HamburgerIcon } from "@chakra-ui/icons";
 
-const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
-];
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 const category = [
   { name: "Watch" },
@@ -49,15 +27,6 @@ const category = [
 ];
 const Sidebar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const featuredCollectionData = useSelector(
-  //   (store) => store.appReducer.product
-  // );
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   // if (featuredCollectionData.length === 0) {
-  //   dispatch(getProduct());
-  //   // }
-  // }, []);
   return (
     <Box
       h="100vh"
@@ -80,7 +49,9 @@ const Sidebar = () => {
         size="xs"
       >
         <DrawerContent overflow="scroll">
+          {/* <DrawerBody p={0} m={0}> */}
           <SidebarContent onClose={onClose} />
+          {/* </DrawerBody> */}
         </DrawerContent>
       </Drawer>
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
@@ -91,24 +62,22 @@ const Sidebar = () => {
 const SidebarContent = ({ onClose, ...rest }) => {
   return (
     <Box
-      bg={useColorModeValue("gray.100", "gray.900")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 72 }}
-      // pos="fixed"
+      bg={useColorModeValue("gray.50", "gray.100")}
+      // borderRight="0.4px"
+      borderRightColor={useColorModeValue("gray.50", "gray.100")}
+      w={{ base: "full", md: 64 }}
       h="full"
       {...rest}
     >
       <Flex
         direction={"column  "}
         alignItems="center"
-        mx="8"
         mt="20"
         justifyContent="space-between"
       >
         {/* --- Sort by Price  */}
         <Flex
-          boxShadow={"2xl"}
+          boxShadow={"sm"}
           direction={"column"}
           bg="white"
           borderRadius={"15px"}
@@ -134,7 +103,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
         {/*  SHOP BY CATEGORY SECTION  */}
         <Flex
-          boxShadow={"2xl"}
+          boxShadow={"sm"}
           direction={"column"}
           bg="white"
           borderRadius={"15px"}
@@ -155,7 +124,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
         {/* ----- SHOP BY AVAILABILITY ----- */}
         <Flex
-          boxShadow={"2xl"}
+          boxShadow={"sm"}
           direction={"column"}
           bg="white"
           borderRadius={"15px"}
@@ -261,12 +230,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
       borderBottomWidth="0px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="end"
-      // border="1px solid red"
       {...rest}
     >
-      {/* <Text onClick={onOpen} color="white">
-        Filters
-      </Text> */}
       <IconButton
         w={5}
         h={5}
@@ -276,10 +241,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<HamburgerIcon />}
       />
-
-      {/* <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
-      </Text> */}
     </Flex>
   );
 };

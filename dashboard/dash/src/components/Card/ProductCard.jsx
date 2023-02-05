@@ -36,9 +36,9 @@ export const ProductCard = (props) => {
     // navigate("/cart");
   };
   return (
-    <Stack spacing={{ base: "4", md: "5" }} {...rootProps}>
+    <Stack spacing={{ base: "4", md: "5" }}  {...rootProps} >
       <NavLink to={`/${id}`}>
-        <Box position="relative">
+        <Box position="relative" >
           <AspectRatio ratio={4 / 3}>
             <Image
               src={thumbnail}
