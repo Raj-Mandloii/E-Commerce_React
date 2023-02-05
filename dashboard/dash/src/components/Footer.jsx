@@ -123,6 +123,7 @@ export default function Footer() {
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={"row"}>
               <Input
+              autoFocus=""
                 placeholder={"Your email address"}
                 bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
                 border={0}
@@ -133,9 +134,6 @@ export default function Footer() {
               <IconButton
                 bg={useColorModeValue("green.400", "green.800")}
                 color={useColorModeValue("white", "gray.800")}
-                // _hover={{
-                //   bg: "green.600",
-                // }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
               />

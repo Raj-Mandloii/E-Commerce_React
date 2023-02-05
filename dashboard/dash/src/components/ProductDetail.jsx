@@ -42,6 +42,7 @@ export default function ProductDetails() {
   }, shallowEqual);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (featuredCollectionData.length === 0) {
       dispatch(getProduct());
     }

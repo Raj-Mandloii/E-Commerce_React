@@ -42,7 +42,7 @@ export const cartReducer = (state = { cartItems }, action) => {
       saveLocalData("e-shop-cart", [...state.cartItems]);
       return { ...state, cartItems: [...state.cartItems] };
 
-      break;
+      
     case actionTypes.REMOVE_FROM_CART:
       saveLocalData(
         "e-shop-cart",

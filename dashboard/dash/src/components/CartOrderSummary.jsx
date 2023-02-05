@@ -8,6 +8,7 @@ import {
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import { formatPrice } from "./PriceTag";
 
 const OrderSummaryItem = (props) => {
@@ -48,15 +49,16 @@ export const CartOrderSummary = ({ finalPrice }) => {
           </Text>
         </Flex>
       </Stack>
-      <Button
-        colorScheme="blue"
-        size="lg"
-        fontSize="md"
-        rightIcon={<FaArrowRight />}
-      >
-        Checkout
-      </Button>
-      
+      <NavLink to="/payment">
+        <Button
+          colorScheme="blue"
+          size="lg"
+          fontSize="md"
+          rightIcon={<FaArrowRight />}
+        >
+          Checkout
+        </Button>
+      </NavLink>
     </Stack>
   );
 };

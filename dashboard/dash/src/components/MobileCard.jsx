@@ -22,6 +22,7 @@ const starData = {
 };
 
 const MobileCard = ({ items }) => {
+  // console.log("CARD IS RENDERD",items)
   const futureDate = () => {
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 10);
@@ -79,9 +80,9 @@ const MobileCard = ({ items }) => {
                 {items.rating}
               </Text>
               <Rating defaultValue={items.rating} size="sm" />
-              <Text fontSize={"xs"} mt="1" ml="1">
+              {/* <Text fontSize={"xs"} mt="1" ml="1">
                 ({Math.floor(Math.random() * 100)})
-              </Text>
+              </Text> */}
             </Flex>
             <Box
               bg="blue.500"

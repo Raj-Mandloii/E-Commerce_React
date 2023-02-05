@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "./Card/Card";
 import MobileCard from "./MobileCard";
 import { getProduct } from "../redux/appReducer/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import LoadingIndicator from "./LoadingIndicator";
-import { NavLink } from "react-router-dom";
 const ProductList = () => {
+  const dispatch = useDispatch();
   const { loading, featuredCollectionData, error } = useSelector((store) => {
     return {
       featuredCollectionData: store.appReducer.product,
@@ -15,14 +15,17 @@ const ProductList = () => {
     };
   }, shallowEqual);
 
-  const dispatch = useDispatch();
+  const a = useSelector((store) => store.sortFilterReducer.query);
+
   useEffect(() => {
-    // console.log("getting");
+    window.scrollTo(0, 0);
     if (featuredCollectionData.length === 0) {
       dispatch(getProduct());
-       console.log("FETCHING THE DATA ");
+      // console.log("FETCHING THE DATA",featuredCollectionData);
     }
+    // console.log("THIS IS RENDERING ",featuredCollectionData,a,loading,data)
   }, []);
+
   return (
     <Box w="100%">
       {/* {!loading && (
@@ -32,11 +35,13 @@ const ProductList = () => {
       {loading ? (
         <LoadingIndicator topMargin={10} />
       ) : (
-        featuredCollectionData.map((el) => (
-          // <NavLink to={`/${el.id}`}>
-          <MobileCard key={el.id} items={el} />
-          // </NavLink>
-        ))
+        featuredCollectionData
+          .filter((user) =>
+            user.title.toLowerCase().includes(a.trim().toLowerCase())
+          )
+          .map((el) => {
+            return <MobileCard key={el.id} items={el} />;
+          })
       )}
 
       {/* MEDIUM TO LARGE SCREEN */}
