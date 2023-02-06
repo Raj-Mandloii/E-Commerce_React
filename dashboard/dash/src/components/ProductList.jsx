@@ -16,6 +16,7 @@ const ProductList = () => {
   }, shallowEqual);
 
   const query = useSelector((store) => store.sortFilterReducer.query);
+  const sortParam = useSelector((store) => store.sortFilterReducer.sortParam);
 
   useEffect(() => {
     window.scrollTo(0, 0);

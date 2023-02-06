@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IconButton,
   Box,
@@ -15,9 +15,12 @@ import {
   Stack,
   RadioGroup,
   DrawerBody,
+  Select,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { sortData } from "../redux/appReducer/sortFilterAction";
 
 const category = [
   { name: "Watch" },
@@ -60,6 +63,7 @@ const Sidebar = () => {
 };
 
 const SidebarContent = ({ onClose, ...rest }) => {
+    const dispatch = useDispatch()
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.100")}
@@ -90,16 +94,12 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Text fontSize="md" fontWeight="bold" mb="4" mr="8">
             Sort by Price
           </Text>
-          <RadioGroup defaultValue="2">
-            <Stack spacing={5} direction="column" ml="6">
-              <Radio colorScheme="blue" value="1">
-                Low to High
-              </Radio>
-              <Radio colorScheme="blue" value="2">
-                High to Low
-              </Radio>
-            </Stack>
-          </RadioGroup>
+
+          <Select py="4" size={"sm"} borderRadius="lg" placeholder="Default" onChange={(e)=> dispatch(sortData(e.target.value))}>
+            {/* <option value="asc">Default</option> */}
+            <option value="asc">Low to High</option>
+            <option value="option2">High to Low</option>
+          </Select>
         </Flex>
         {/*  SHOP BY CATEGORY SECTION  */}
         <Flex
@@ -118,7 +118,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </Text>
           <Box lineHeight="1" fontSize={"xs"}>
             {category.map((link) => (
-              <NavItem key={link.name}>{link.name}</NavItem>
+              <NavItem  key={link.name}>{link.name}</NavItem>
             ))}
           </Box>
         </Flex>
