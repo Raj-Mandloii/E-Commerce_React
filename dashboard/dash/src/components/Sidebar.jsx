@@ -16,18 +16,16 @@ import {
   RadioGroup,
   DrawerBody,
   Select,
+  useRadioGroup,
+  HStack,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { sortData } from "../redux/appReducer/sortFilterAction";
+import { sortbyCategory, sortData } from "../redux/appReducer/sortFilterAction";
+import RadioCard from "./RadioCard/Radiocard";
 
-const category = [
-  { name: "Watch" },
-  { name: "TV" },
-  { name: "Camera" },
-  { name: "Laptop" },
-];
+const category = ["Watch", "TV", "Camera", "Laptop","Smartphone"];
 const Sidebar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -63,7 +61,13 @@ const Sidebar = () => {
 };
 
 const SidebarContent = ({ onClose, ...rest }) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: "Category",
+    defaultValue: "",
+    onChange: (e)=> dispatch(sortbyCategory(e)),
+  });
+  const group = getRootProps();
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.100")}
@@ -95,7 +99,13 @@ const SidebarContent = ({ onClose, ...rest }) => {
             Sort by Price
           </Text>
 
-          <Select py="4" size={"sm"} borderRadius="lg" placeholder="Default" onChange={(e)=> dispatch(sortData(e.target.value))}>
+          <Select
+            py="4"
+            size={"sm"}
+            borderRadius="lg"
+            placeholder="Default"
+            onChange={(e) => dispatch(sortData(e.target.value))}
+          >
             {/* <option value="asc">Default</option> */}
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
@@ -116,11 +126,21 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Text fontSize="md" fontWeight="bold" mb="4">
             Shop By Categories
           </Text>
-          <Box lineHeight="1" fontSize={"xs"}>
+          <Stack direction={"column"} {...group}>
+            {category.map((value) => {
+              const radio = getRadioProps({ value });
+              return (
+                <RadioCard key={value} {...radio}>
+                  {value}
+                </RadioCard>
+              );
+            })}
+          </Stack>
+          {/* <Box lineHeight="1" fontSize={"xs"}>
             {category.map((link) => (
-              <NavItem  key={link.name}>{link.name}</NavItem>
+              <NavItem key={link.name}>{link.name}</NavItem>
             ))}
-          </Box>
+          </Box> */}
         </Flex>
         {/* ----- SHOP BY AVAILABILITY ----- */}
         <Flex
@@ -142,12 +162,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
               Availability
             </Text>
             <Stack spacing={5} direction="column">
-              <Checkbox colorScheme="blue" defaultChecked>
-                In Stock
-              </Checkbox>
-              <Checkbox colorScheme="blue" defaultChecked>
-                Out of Stock
-              </Checkbox>
+              <Checkbox colorScheme="blue">In Stock</Checkbox>
+              <Checkbox colorScheme="blue">Out of Stock</Checkbox>
             </Stack>
           </Box>
         </Flex>
@@ -179,41 +195,41 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
-  return (
-    <Link
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        // _hover={{
-        //   bg: "cyan.400",
-        //   color: "white",
-        // }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
-  );
-};
+// const NavItem = ({ icon, children, ...rest }) => {
+//   return (
+//     <Link
+//       href="#"
+//       style={{ textDecoration: "none" }}
+//       _focus={{ boxShadow: "none" }}
+//     >
+//       <Flex
+//         align="center"
+//         p="4"
+//         mx="4"
+//         borderRadius="lg"
+//         role="group"
+//         cursor="pointer"
+//         // _hover={{
+//         //   bg: "cyan.400",
+//         //   color: "white",
+//         // }}
+//         {...rest}
+//       >
+//         {icon && (
+//           <Icon
+//             mr="4"
+//             fontSize="16"
+//             _groupHover={{
+//               color: "white",
+//             }}
+//             as={icon}
+//           />
+//         )}
+//         {children}
+//       </Flex>
+//     </Link>
+//   );
+// };
 
 const MobileNav = ({ onOpen, ...rest }) => {
   return (

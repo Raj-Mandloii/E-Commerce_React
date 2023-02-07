@@ -6,6 +6,8 @@ import { useMemo } from "react";
 export const Card = ({ data }) => {
   const query = useSelector((store) => store.sortFilterReducer.query);
   const sortParam = useSelector((store) => store.sortFilterReducer.sortParam);
+  const sortByCategory = useSelector((store) => store.sortFilterReducer.sortByCategory);
+  
   const queryFilter = useMemo(() =>
     data
       .filter((user) =>

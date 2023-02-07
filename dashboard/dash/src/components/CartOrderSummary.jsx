@@ -18,7 +18,7 @@ const OrderSummaryItem = (props) => {
       <Text fontWeight="medium" color={mode("gray.600", "gray.400")}>
         {label}
       </Text>
-      {value ? <Text fontWeight="medium">Rs. {value}</Text> : children}
+      {value ? <Text fontWeight="medium">{value}</Text> : children}
     </Flex>
   );
 };
@@ -31,21 +31,21 @@ export const CartOrderSummary = ({ finalPrice }) => {
       <Stack spacing="6">
         <OrderSummaryItem label="Subtotal" value={formatPrice(finalPrice)} />
         <OrderSummaryItem label="Shipping + Tax">
-          <Link href="#" textDecor="underline">
-            Calculate shipping
-          </Link>
+          {/* <Link href="#" textDecor="underline"> */}
+           ₹ 0.00
+          {/* </Link> */}
         </OrderSummaryItem>
         <OrderSummaryItem label="Coupon Code">
-          <Link href="#" textDecor="underline">
-            Add coupon code
-          </Link>
+          {/* <Link href="#" textDecor="underline"> */}
+            Not Applicable
+          {/* </Link> */}
         </OrderSummaryItem>
         <Flex justify="space-between">
           <Text fontSize="lg" fontWeight="semibold">
             Total
           </Text>
           <Text fontSize="xl" fontWeight="extrabold">
-            Rs. {formatPrice(finalPrice)}
+            {formatPrice(finalPrice)}
           </Text>
         </Flex>
       </Stack>

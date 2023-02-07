@@ -17,6 +17,7 @@ export const sortFilterReducer = (state = initState, action) => {
       return { ...state, sortParam: action.payload };
 
     case actionTypes.SORT_BY_CATEGORY:
+      
       return {...state, sortByCategory: action.payload}
     default:
       return state;

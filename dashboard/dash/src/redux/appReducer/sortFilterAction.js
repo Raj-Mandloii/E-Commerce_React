@@ -9,7 +9,6 @@ export const searchedQuery = (query) => async (dispatch) => {
 };
 
 export const sortData = (param) => async (dispatch) => {
-  //  console.log("PARAM",param)
   try {
     dispatch({ type: actionTypes.SORT_SUCCESS, payload: param });
   } catch (error) {
