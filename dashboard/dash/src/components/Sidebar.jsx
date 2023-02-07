@@ -98,7 +98,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           <Select py="4" size={"sm"} borderRadius="lg" placeholder="Default" onChange={(e)=> dispatch(sortData(e.target.value))}>
             {/* <option value="asc">Default</option> */}
             <option value="asc">Low to High</option>
-            <option value="option2">High to Low</option>
+            <option value="desc">High to Low</option>
           </Select>
         </Flex>
         {/*  SHOP BY CATEGORY SECTION  */}

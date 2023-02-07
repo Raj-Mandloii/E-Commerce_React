@@ -5,11 +5,25 @@ import { useSelector } from "react-redux";
 import { useMemo } from "react";
 export const Card = ({ data }) => {
   const query = useSelector((store) => store.sortFilterReducer.query);
+  const sortParam = useSelector((store) => store.sortFilterReducer.sortParam);
   const queryFilter = useMemo(() =>
-    data.filter((user) =>
-      user.title.toLowerCase().includes(query.trim().toLowerCase())
-    )
+    data
+      .filter((user) =>
+        user.title.toLowerCase().includes(query.trim().toLowerCase())
+      )
+      .sort((a, b) =>
+        sortParam === "asc"
+          ? a.price > b.price
+            ? 1
+            : -1
+          : sortParam === "desc"
+          ? b.price < a.price
+            ? -1
+            : 1
+          : 0
+      )
   );
+
   return (
     <Box
       display={{ base: "none", md: "flex" }}

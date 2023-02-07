@@ -1,5 +1,4 @@
 import * as actionTypes from "./actionTypes";
-
 const initState = {
   searchedItem: [],
   query: "",
@@ -8,7 +7,6 @@ const initState = {
 };
 
 export const sortFilterReducer = (state = initState, action) => {
-  //  console.log(action)
   switch (action.type) {
     case actionTypes.SEARCH:
       state.query = action.payload;

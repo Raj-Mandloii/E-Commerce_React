@@ -28,9 +28,21 @@ const ProductList = () => {
   }, []);
 
   const queryFilter = useMemo(() =>
-    featuredCollectionData.filter((user) =>
-      user.title.toLowerCase().includes(query.trim().toLowerCase())
-    )
+    featuredCollectionData
+      .filter((user) =>
+        user.title.toLowerCase().includes(query.trim().toLowerCase())
+      )
+      .sort((a, b) =>
+        sortParam === "asc"
+          ? a.price > b.price
+            ? 1
+            : -1
+          : sortParam === "desc"
+          ? b.price < a.price
+            ? -1
+            : 1
+          : 0
+      )
   );
   return (
     <Box w="100%">
