@@ -21,24 +21,24 @@ import customToast from "../customToast/toast";
 
 export const ProductCard = (props) => {
   const { product, rootProps } = props;
-  const toast = useToast()
+  const toast = useToast();
   const dispatch = useDispatch();
   const { id, title, thumbnail, price, description, rating } = product;
   const addItemsToCart = () => {
-    dispatch(addToCart(product, 1)).then((_)=>{
+    dispatch(addToCart(product, 1)).then((_) => {
       customToast({
         toast: toast,
         title: "Cart",
         message: "Item added to cart successfully",
         status: "success",
       });
-    })
+    });
     // navigate("/cart");
   };
   return (
-    <Stack spacing={{ base: "4", md: "5" }}  {...rootProps} >
-      <NavLink to={`/${id}`}>
-        <Box position="relative" >
+    <Stack spacing={{ base: "4", md: "5" }} {...rootProps}>
+      <NavLink to={`product/${id}`}>
+        <Box position="relative">
           <AspectRatio ratio={4 / 3}>
             <Image
               src={thumbnail}
@@ -81,13 +81,14 @@ export const ProductCard = (props) => {
         <Button colorScheme="blue" width="full" onClick={addItemsToCart}>
           Add to cart
         </Button>
-        <Link
+        {/* <NavLink
+          to="/payment"
           textDecoration="underline"
           fontWeight="medium"
           color={useColorModeValue("gray.600", "gray.400")}
         >
           Buy Now
-        </Link>
+        </NavLink> */}
       </Stack>
     </Stack>
   );

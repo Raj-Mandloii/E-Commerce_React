@@ -13,11 +13,11 @@ export default function RadioCard(props) {
         {...checkbox}
         cursor="pointer"
         borderWidth="0px"
-        borderRadius="md"
-        boxShadow="md"
+        borderRadius="lg"
+        boxShadow="xs"
         fontSize={"xs"}
         _checked={{
-          bg: "blue.600",
+          bg: "blue.500",
           color: "white",
           borderColor: "blue.600",
         }}

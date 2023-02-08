@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Form1 = () => {
   const [show, setShow] = React.useState(false);
@@ -103,6 +103,8 @@ const Form2 = () => {
           w="full"
           rounded="md"
         >
+          <option>India</option>
+          <option>Australia</option>
           <option>United States</option>
           <option>Canada</option>
           <option>Mexico</option>
@@ -287,7 +289,11 @@ export default function PaymentDetails() {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(100);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // const comingFrom = location.state?.from?.pathname || "/";
+  // console.log(comingFrom)
   return (
     <Box w={"100%"} h={"100vh"} mt="20">
       <Box
@@ -324,7 +330,7 @@ export default function PaymentDetails() {
                 Back
               </Button> */}
               <Button
-                px='4'
+                px="4"
                 isDisabled={step === 3}
                 onClick={() => {
                   setStep(step + 1);
@@ -343,7 +349,7 @@ export default function PaymentDetails() {
             {step === 3 ? (
               <Button
                 // w="7rem"
-                px='4'
+                px="4"
                 colorScheme="red"
                 variant="solid"
                 onClick={() => {
@@ -354,7 +360,7 @@ export default function PaymentDetails() {
                     duration: 3000,
                     isClosable: true,
                   });
-                  navigate("/")
+                  navigate("/");
                 }}
               >
                 Confirm Order

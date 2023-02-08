@@ -31,8 +31,8 @@ import { FiUser } from "react-icons/fi";
 
 import { NavLink, useLocation } from "react-router-dom";
 import WebLogo from "../assets/logo.png";
-import { useEffect, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { searchedQuery } from "../redux/appReducer/sortFilterAction";
 
 export default function WithSubnavigation() {
@@ -49,9 +49,7 @@ export default function WithSubnavigation() {
     };
   });
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  useEffect(() => {
-    console.log(pathname);
-  }, [token, pathname]);
+  useEffect(() => {}, [token, pathname]);
 
   return (
     <Box>

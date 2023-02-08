@@ -53,7 +53,7 @@ const MobileCard = ({ items }) => {
         pos={"relative"}
         zIndex={1}
       >
-        <NavLink to={`/${items.id}`}>
+        <NavLink to={`product/${items.id}`}>
           <Avatar
             p="0"
             ml="-2"
@@ -64,7 +64,7 @@ const MobileCard = ({ items }) => {
             fallback={<Skeleton />}
           />
         </NavLink>
-        <NavLink to={`/${items.id}`}>
+        <NavLink to={`product/${items.id}`}>
           <Flex
             // border="1px solid red"
             direction={"column"}
