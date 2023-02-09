@@ -31,10 +31,10 @@ export const cartReducer = (state = { cartItems }, action) => {
       break;
     case actionTypes.CHANGE_QUANTITY:
       const { id, quantity } = action.payload;
-      // console.log("NEW QUATITY ::", quantity);
+      
       state.cartItems.forEach((el) => {
         if (el.id === id) {
-          return (el.quantity = quantity);
+          return (el.quantity += quantity);
         }
         return el;
       });

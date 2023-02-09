@@ -4,6 +4,8 @@ import {
   Link,
   Select,
   useColorModeValue,
+  Text,
+  Button,
 } from "@chakra-ui/react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
@@ -57,16 +59,28 @@ export const CartItem = (props) => {
         justify="space-between"
         display={{ base: "none", md: "flex" }}
       >
-        <QuantitySelect
+        <Flex direction={"row"} alignItems="center" justifyItems={"center"}>
+          <Button
+            m="3"
+            onClick={(e) => quantity != 1 && onChangeQuantity?.(-1, +id)}
+          >
+            -
+          </Button>
+          <Text m="3">x{" " + quantity}</Text>
+          <Button m="3" onClick={(e) => onChangeQuantity?.(+1, +id)}>
+            +
+          </Button>
+        </Flex>
+        {/* <QuantitySelect
           value={quantity}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value,+id);
           }}
-        />
+        /> */}
         <PriceTag price={price} currency={"INR"} />
         <CloseButton
           aria-label={`Delete ${title} from cart`}
-          onClick={()=> onClickDelete(id)}
+          onClick={() => onClickDelete(id)}
         />
       </Flex>
 
@@ -78,15 +92,25 @@ export const CartItem = (props) => {
         justify="space-between"
         display={{ base: "flex", md: "none" }}
       >
-        <Link fontSize="sm" textDecor="underline"  onClick={()=> onClickDelete(id)}>
+        <Link
+          fontSize="sm"
+          textDecor="underline"
+          onClick={() => onClickDelete(id)}
+        >
           Delete
         </Link>
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        />
+        <Flex direction={"row"} alignItems="center" justifyItems={"center"}>
+          <Button
+            m="3"
+            onClick={(e) => quantity != 1 && onChangeQuantity?.(-1, +id)}
+          >
+            -
+          </Button>
+          <Text m="3">x{" " + quantity}</Text>
+          <Button m="3" onClick={(e) => onChangeQuantity?.(+1, +id)}>
+            +
+          </Button>
+        </Flex>
         <PriceTag price={price} currency={"INR"} />
       </Flex>
     </Flex>
