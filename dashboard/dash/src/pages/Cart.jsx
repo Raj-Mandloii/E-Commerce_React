@@ -11,8 +11,8 @@ import {
 import {  FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { CartItem } from "../components/CartItem";
-import { CartOrderSummary } from "../components/CartOrderSummary";
+import { CartItem } from "../components/Cart/CartItem";
+import { CartOrderSummary } from "../components/Cart/CartOrderSummary";
 import {
   changeQuantity,
   removedFromCart,

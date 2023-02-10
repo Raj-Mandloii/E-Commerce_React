@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { formatPrice } from "./PriceTag";
+import { formatPrice } from "../PriceTag";
 
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;

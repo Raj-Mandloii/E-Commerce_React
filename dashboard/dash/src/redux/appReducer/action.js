@@ -3,12 +3,13 @@ import axios from "axios";
 
 const baseUrl = "https://sore-lime-reindeer-toga.cyclic.app/api/";
 
-const getProduct = () => (dispatch) => {
+const getProduct = (current) => (dispatch) => {
   dispatch({ type: type.REQUEST });
 
   return axios
-    .get(baseUrl + "product?limit=20")
+    .get(baseUrl + `product?limit=20&page=${current}`)
     .then((r) => {
+      console.log(r.data)
       return dispatch({ type: type.SUCCESS, payload: r.data });
     })
     .catch((e) => {

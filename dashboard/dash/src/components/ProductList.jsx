@@ -5,8 +5,10 @@ import MobileCard from "./MobileCard";
 import { getProduct } from "../redux/appReducer/action";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import LoadingIndicator from "./LoadingIndicator";
+import PaginationSection from "./Pagination/Pagination";
 const ProductList = () => {
   const dispatch = useDispatch();
+  const [current, setCurrent] = useState(1);
   const { loading, featuredCollectionData, error } = useSelector((store) => {
     return {
       featuredCollectionData: store.appReducer.product,
@@ -20,12 +22,12 @@ const ProductList = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (featuredCollectionData.length === 0) {
-      dispatch(getProduct());
+    // if (featuredCollectionData.length === 0) {
+      dispatch(getProduct(current));
       // console.log("FETCHING THE DATA",featuredCollectionData);
-    }
+    // }
     // console.log("THIS IS RENDERING ",featuredCollectionData,a,loading,data)
-  }, []);
+  }, [current]);
 
   const queryFilter = useMemo(() =>
     featuredCollectionData
@@ -57,6 +59,7 @@ const ProductList = () => {
 
       {/* MEDIUM TO LARGE SCREEN */}
       <Card data={featuredCollectionData} />
+      <PaginationSection current={current} setCurrent={setCurrent} />
     </Box>
   );
 };

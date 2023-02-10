@@ -7,7 +7,7 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import { PriceTag } from "./PriceTag";
+import { PriceTag } from "../PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
 
 const QuantitySelect = (props) => {
