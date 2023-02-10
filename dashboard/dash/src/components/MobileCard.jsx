@@ -2,27 +2,19 @@ import React from "react";
 import {
   Avatar,
   Box,
-  Button,
   Flex,
   Heading,
   Skeleton,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Rating } from "./Card/Rating";
 
 import { NavLink } from "react-router-dom";
 import { FavouriteButton } from "./Card/FavouriteButton";
 import { PriceTag } from "./Card/PriceTag";
-
-const starData = {
-  size: 20,
-  value: 3.5,
-  edit: false,
-};
+import { Rating } from "./Card/Rating";
 
 const MobileCard = ({ items }) => {
-  // console.log("CARD IS RENDERD",items)
   const futureDate = () => {
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 10);
@@ -36,13 +28,11 @@ const MobileCard = ({ items }) => {
       display={{ base: "block", md: "none" }}
       w="100%"
       textAlign={"center"}
-      // m="2"
       mt="16"
       columnGap="4"
       position="relative"
     >
       <Flex
-        // border="1px solid red"
         alignItems={"center"}
         role={"group"}
         w="100%"
@@ -109,7 +99,6 @@ const MobileCard = ({ items }) => {
           </Flex>
         </NavLink>
         <FavouriteButton
-          
           position="absolute"
           top={"-2"}
           right="2"

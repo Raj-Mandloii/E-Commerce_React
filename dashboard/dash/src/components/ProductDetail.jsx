@@ -19,7 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import { MdLocalShipping } from "react-icons/md";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getProduct } from "../redux/appReducer/action";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -30,7 +30,7 @@ import customToast from "../components/customToast/toast";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const toast  = useToast()
+  const toast = useToast();
   const dispatch = useDispatch();
   const [currentItem, setCurrentItem] = useState({});
   const { loading, featuredCollectionData, error } = useSelector((store) => {
@@ -42,7 +42,7 @@ export default function ProductDetails() {
   }, shallowEqual);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     if (featuredCollectionData.length === 0) {
       dispatch(getProduct());
     }
@@ -57,15 +57,15 @@ export default function ProductDetails() {
   }, [id, featuredCollectionData]);
 
   const addItemsToCart = () => {
-    dispatch(addToCart(currentItem)).then((_)=>{
-      console.log("Added items to cart")
-     return customToast({
+    dispatch(addToCart(currentItem)).then((_) => {
+      console.log("Added items to cart");
+      return customToast({
         toast: toast,
         title: "Cart",
         message: "Item added to cart successfully",
         status: "success",
       });
-    })
+    });
     // navigate("/cart");
   };
 
@@ -244,14 +244,16 @@ export default function ProductDetails() {
             >
               Add to cart
             </Button>
-            <Button
-              fontSize={"xs"}
-              bg={useColorModeValue("blue.300", "gray.50")}
-              color={useColorModeValue("white", "gray.900")}
-              textTransform={"uppercase"}
-            >
-              Buy It Now
-            </Button>
+            <NavLink to="/payment">
+              <Button
+                fontSize={"xs"}
+                bg={useColorModeValue("blue.300", "gray.50")}
+                color={useColorModeValue("white", "gray.900")}
+                textTransform={"uppercase"}
+              >
+                Buy It Now
+              </Button>
+            </NavLink>
           </Flex>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
