@@ -23,8 +23,8 @@ const ProductList = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     // if (featuredCollectionData.length === 0) {
-      dispatch(getProduct(current));
-      // console.log("FETCHING THE DATA",featuredCollectionData);
+    dispatch(getProduct(current));
+    // console.log("FETCHING THE DATA",featuredCollectionData);
     // }
     // console.log("THIS IS RENDERING ",featuredCollectionData,a,loading,data)
   }, [current]);
@@ -59,7 +59,9 @@ const ProductList = () => {
 
       {/* MEDIUM TO LARGE SCREEN */}
       <Card data={featuredCollectionData} />
-      <PaginationSection current={current} setCurrent={setCurrent} />
+      {!loading && (
+        <PaginationSection current={current} setCurrent={setCurrent} />
+      )}
     </Box>
   );
 };
