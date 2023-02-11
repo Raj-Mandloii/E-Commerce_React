@@ -80,17 +80,17 @@ export default function Footer() {
         >
           <Stack spacing={6}>
             <Box>
-            <NavLink to="/" replace={true}>
-            <Text
-              display={{ base: "none", md: "flex" }}
-              bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
-              bgClip="text"
-              fontSize="2xl"
-              fontWeight="extrabold"
-            >
-              {"<E-SHOP/>"}
-            </Text>
-          </NavLink>
+              <NavLink to="/" replace={true}>
+                <Text
+                  // display={{ base: "none", md: "flex" }}
+                  bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
+                  bgClip="text"
+                  fontSize="2xl"
+                  fontWeight="extrabold"
+                >
+                  {"<E-SHOP/>"}
+                </Text>
+              </NavLink>
               {/* <Logo color={useColorModeValue("gray.700", "white")} /> */}
             </Box>
             <Text fontSize={"sm"}>© 2023 All rights reserved</Text>
@@ -123,7 +123,7 @@ export default function Footer() {
             <Link href={"#"}>Pricing</Link>
             <Link href={"#"}>Testimonials</Link>
           </Stack>
-          <Stack align={"flex-start"}>
+          <Stack display={{ base: "none", md: "flex" }} align={"flex-start"}>
             <ListHeader>Support</ListHeader>
             <Link href={"#"}>Help Center</Link>
             <Link href={"#"}>Terms of Service</Link>
@@ -135,7 +135,7 @@ export default function Footer() {
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={"row"}>
               <Input
-              autoFocus=""
+                autoFocus=""
                 placeholder={"Your email address"}
                 bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
                 border={0}

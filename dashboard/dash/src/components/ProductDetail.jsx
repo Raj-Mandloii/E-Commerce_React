@@ -19,7 +19,7 @@ import {
 import { useEffect, useState } from "react";
 import { MdLocalShipping } from "react-icons/md";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { getProduct } from "../redux/appReducer/action";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -30,6 +30,7 @@ import customToast from "../components/customToast/toast";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate()
   const toast = useToast();
   const dispatch = useDispatch();
   const [currentItem, setCurrentItem] = useState({});
@@ -244,16 +245,17 @@ export default function ProductDetails() {
             >
               Add to cart
             </Button>
-            <NavLink to="/payment">
-              <Button
-                fontSize={"xs"}
-                bg={useColorModeValue("blue.300", "gray.50")}
-                color={useColorModeValue("white", "gray.900")}
-                textTransform={"uppercase"}
-              >
-                Buy It Now
-              </Button>
-            </NavLink>
+            {/* <NavLink to="/payment" > */}
+            <Button
+              fontSize={"xs"}
+              bg={useColorModeValue("blue.300", "gray.50")}
+              color={useColorModeValue("white", "gray.900")}
+              textTransform={"uppercase"}
+              onClick={()=> navigate('/payment')}
+            >
+              Buy It Now
+            </Button>
+            {/* </NavLink> */}
           </Flex>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
