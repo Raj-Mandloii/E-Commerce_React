@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
+import { NavLink } from "react-router-dom";
 
 const Logo = (props) => {
   return (
@@ -79,7 +80,18 @@ export default function Footer() {
         >
           <Stack spacing={6}>
             <Box>
-              <Logo color={useColorModeValue("gray.700", "white")} />
+            <NavLink to="/" replace={true}>
+            <Text
+              display={{ base: "none", md: "flex" }}
+              bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
+              bgClip="text"
+              fontSize="2xl"
+              fontWeight="extrabold"
+            >
+              {"<E-SHOP/>"}
+            </Text>
+          </NavLink>
+              {/* <Logo color={useColorModeValue("gray.700", "white")} /> */}
             </Box>
             <Text fontSize={"sm"}>© 2023 All rights reserved</Text>
             <Stack direction={"row"} spacing={6}>
