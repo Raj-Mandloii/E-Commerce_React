@@ -61,7 +61,6 @@ const getaProduct = asyncHandler(async (req, res) => {
 });
 
 const getAllProduct = asyncHandler(async (req, res) => {
-  console.log('get all products')
   try {
 
     // Filtering

@@ -9,6 +9,7 @@ export const searchedQuery = (query) => async (dispatch) => {
 };
 
 export const sortData = (param) => async (dispatch) => {
+  
   try {
     dispatch({ type: actionTypes.SORT_SUCCESS, payload: param });
   } catch (error) {
@@ -17,8 +18,11 @@ export const sortData = (param) => async (dispatch) => {
 };
 
 export const sortbyCategory = (param) => async (dispatch) => {
+  let cate = param === "All" ? "" : param;
+  // console.log(cate)
+  // console.log(param)
   try {
-    dispatch({ type: actionTypes.SORT_BY_CATEGORY, payload: param });
+    dispatch({ type: actionTypes.SORT_BY_CATEGORY, payload: cate });
   } catch (error) {
     dispatch({ type: actionTypes.SORT_BY_CATEGORYERROR, payload: error.message });
   }

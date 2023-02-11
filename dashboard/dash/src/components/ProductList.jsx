@@ -16,23 +16,26 @@ const ProductList = () => {
       error: store.appReducer.error,
     };
   }, shallowEqual);
-
+  const sortByCategory = useSelector(
+    (store) => store.sortFilterReducer.sortByCategory
+  );
   const query = useSelector((store) => store.sortFilterReducer.query);
   const sortParam = useSelector((store) => store.sortFilterReducer.sortParam);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // if (featuredCollectionData.length === 0) {
     dispatch(getProduct(current));
-    // console.log("FETCHING THE DATA",featuredCollectionData);
-    // }
-    // console.log("THIS IS RENDERING ",featuredCollectionData,a,loading,data)
   }, [current]);
 
   const queryFilter = useMemo(() =>
     featuredCollectionData
       .filter((user) =>
         user.title.toLowerCase().includes(query.trim().toLowerCase())
+      )
+      .filter((item) =>
+        item.category
+          .toLowerCase()
+          .includes(sortByCategory.trim().toLowerCase())
       )
       .sort((a, b) =>
         sortParam === "asc"

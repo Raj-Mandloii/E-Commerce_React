@@ -25,12 +25,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { sortbyCategory, sortData } from "../redux/appReducer/sortFilterAction";
 import RadioCard from "./RadioCard/Radiocard";
 
-const category = ["Watch", "TV", "Camera", "Laptop","Smartphone"];
+const category = ["All","Smartphone", "Laptops", "Fragrance", "Skincare","Groceries","Home Decoration"];
 const Sidebar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
-      h="100vh"
+       minH="100vh"
+      // mb='10'
       bg={useColorModeValue("gray.100", "gray.900")}
       display="flex"
       boxShadow={"2xl"}
@@ -151,13 +152,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
           py="4"
           px="6"
           mt="4"
+          mb='10'
           w="80%"
           textAlign={"center"}
         >
           <Text fontSize="md" fontWeight="bold" mb="4">
             Filter By
           </Text>
-          <Box textAlign={"start"} lineHeight="1" fontSize={"`xs`"}>
+          <Box textAlign={"start"} lineHeight="1" fontSize={"`xs`"} mb='10'>
             <Text fontSize="xs" fontWeight="bold" mb="4">
               Availability
             </Text>
@@ -168,22 +170,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </Box>
         </Flex>
 
-        {/* ----- SHOP BY Product Tags ----- */}
-        {/* <Flex
-          direction={"column"}
-          bg="white"
-          borderRadius={"15px"}
-          py="4"
-          px="6"
-          mt="4"
-          w="80%"
-          textAlign={"center"}
-        >
-          <Text fontSize="md" fontWeight="bold" mb="4">
-            Similar Products
-          </Text>
-        </Flex> */}
-        {/* <ProductCardSmall /> */}
+
       </Flex>
       {/* <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} /> */}
       {/* {LinkItems.map((link) => (

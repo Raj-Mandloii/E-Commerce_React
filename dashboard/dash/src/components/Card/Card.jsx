@@ -12,8 +12,11 @@ export const Card = ({ data }) => {
 
   const queryFilter = useMemo(() =>
     data
-      .filter((user) =>
-        user.title.toLowerCase().includes(query.trim().toLowerCase())
+      .filter((item) =>
+        item.title.toLowerCase().includes(query.trim().toLowerCase())
+      )
+      .filter((item) =>
+        item.category.toLowerCase().includes(sortByCategory.trim().toLowerCase())
       )
       .sort((a, b) =>
         sortParam === "asc"

@@ -5,7 +5,6 @@ import {
   Heading,
   HStack,
   Stack,
-  Text,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 import {  FaCartPlus } from "react-icons/fa";

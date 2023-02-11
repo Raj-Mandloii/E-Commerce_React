@@ -1,0 +1,26 @@
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
+
+// Define the schema for the data
+const dataSchema = new mongoose.Schema({
+  category: String,
+  name: String
+});
+
+// Create the model
+const Data = mongoose.model("Data", dataSchema);
+
+// Route to get data by category
+app.get("/api/data/:category", (req, res) => {
+  Data.find({ category: req.params.category }, (err, data) => {
+    if (err) return res.status(500).send(err);
+    res.json(data);
+  });
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));

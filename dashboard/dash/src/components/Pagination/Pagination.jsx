@@ -9,6 +9,7 @@ const PaginationSection = ({current, setCurrent}) => {
       alignItems="center"
       justifyContent="center"
       my="6"
+      mt="16"
     >
       <Pagination
         defaultCurrent={1}

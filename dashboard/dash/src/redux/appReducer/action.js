@@ -9,7 +9,7 @@ const getProduct = (current) => (dispatch) => {
   return axios
     .get(baseUrl + `product?limit=20&page=${current}`)
     .then((r) => {
-      console.log(r.data)
+      // console.log(r.data)
       return dispatch({ type: type.SUCCESS, payload: r.data });
     })
     .catch((e) => {
