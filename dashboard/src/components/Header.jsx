@@ -18,7 +18,6 @@ import {
   InputGroup,
   InputRightElement,
   Image,
-  Avatar,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -40,17 +39,12 @@ export default function WithSubnavigation() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const query = useSelector((store) => store.sortFilterReducer.query);
+  const token = useSelector((store) => store.authReducer.token);
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  useEffect(() => {}, [pathname]);
   const handleSearch = (q) => {
     dispatch(searchedQuery(q));
   };
-  const { token } = useSelector((store) => {
-    return {
-      token: store.authReducer.token,
-    };
-  });
-  const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  useEffect(() => {}, [token, pathname]);
-
   return (
     <Box>
       <Flex
