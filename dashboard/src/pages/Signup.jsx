@@ -43,6 +43,7 @@ const Signup = () => {
       values.password
     ) {
       dispatch(register(values)).then((r) => {
+        console.log(r.type)
         if (r.type === types.REGISTER_SUCCESS) {
           customToast({
             toast: toast,

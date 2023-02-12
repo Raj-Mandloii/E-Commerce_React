@@ -161,10 +161,10 @@ export default function WithSubnavigation() {
           ) : (
             <NavLink to="/login">
               <Button
-                color="gray.500"
-                variant={"outline"}
+                color="white"
+                variant={{ base: "unstyled", md: "outline" }}
                 fontSize={"xs"}
-                fontWeight={600}
+                fontWeight={500}
                 mr="4"
                 mt="1"
                 ml="4"
@@ -216,7 +216,6 @@ export default function WithSubnavigation() {
 
 const DesktopNav = ({ cartItems, pathname }) => {
   const linkColor = useColorModeValue("gray.200", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.500", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
