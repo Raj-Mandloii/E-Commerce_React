@@ -46,14 +46,16 @@ export default function WithSubnavigation() {
     dispatch(searchedQuery(q));
   };
   return (
-    <Box >
+    <Box>
       <Flex
         bg={useColorModeValue("#232F3E", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-        h={"55px"}
+         h={"70px"}
         py={{ base: 6 }}
         px={{ base: 2 }}
-        pt='10'
+        pt="10"
+        // border="1px solid red"
+        // pb={pathname === "/" && 10}
         // border="1px solid red"
         // borderBottom={1}
         borderStyle={"solid"}
@@ -64,6 +66,7 @@ export default function WithSubnavigation() {
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
+          
         >
           <IconButton
             color={"white"}
@@ -169,6 +172,7 @@ export default function WithSubnavigation() {
                 mr="4"
                 mt="1"
                 ml="4"
+                
               >
                 Sign in
               </Button>
@@ -325,7 +329,7 @@ const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   return (
-    <Stack spacing={4} onClick={children && onToggle} >
+    <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
         as={Link}
