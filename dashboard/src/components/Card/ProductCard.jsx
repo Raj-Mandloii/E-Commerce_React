@@ -78,17 +78,22 @@ export const ProductCard = (props) => {
         </Stack>
       </NavLink>
       <Stack align="center">
-        <Button colorScheme="#3182CE" width="full" onClick={addItemsToCart}>
+        <Button
+          colorScheme="blue"
+          width="full"
+          onClick={addItemsToCart}
+          
+        >
           Add to cart
         </Button>
-        {/* <NavLink
+        <NavLink
           to="/payment"
           textDecoration="underline"
           fontWeight="medium"
           color={useColorModeValue("gray.600", "gray.400")}
         >
-          Buy Now
-        </NavLink> */}
+          <Button colorScheme="blue" variant={"unstyled"} color="blue.600" w="100%" >Buy Now</Button>
+        </NavLink>
       </Stack>
     </Stack>
   );
