@@ -79,7 +79,7 @@ const Login = () => {
             <HStack spacing="1" justify="center">
               <Text color="muted">Don't have an account?</Text>
               <NavLink to="/signup">
-                <Button variant="link" colorScheme="blue">
+                <Button variant="link" colorScheme="#3182CE">
                   Sign up
                 </Button>
               </NavLink>
@@ -108,7 +108,7 @@ const Login = () => {
             </Stack>
             <HStack justify="space-between">
               <Checkbox defaultChecked>Remember me</Checkbox>
-              <Button variant="link" colorScheme="blue" size="sm">
+              <Button variant="link" colorScheme="#3182CE" size="sm">
                 Forgot password?
               </Button>
             </HStack>
@@ -116,7 +116,7 @@ const Login = () => {
               <Button
                 loadingText="Submitting"
                 size="lg"
-                bg={"blue.400"}
+                bg={"#3182CE"}
                 color={"white"}
                 // _hover={{
                 //   bg: "blue.500",

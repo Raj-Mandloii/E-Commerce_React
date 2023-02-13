@@ -75,7 +75,7 @@ const MobileCard = ({ items }) => {
               </Text> */}
             </Flex>
             <Box
-              bg="blue.500"
+              bg="#3182CE"
               my="1"
               color="white"
               w="7rem"

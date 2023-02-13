@@ -125,7 +125,7 @@ const Signup = () => {
               <Button
                 loadingText="Submitting"
                 size="lg"
-                bg={"blue.400"}
+                bg={"#3182CE"}
                 color={"white"}
                 // _hover={{
                 //   bg: "blue.500",

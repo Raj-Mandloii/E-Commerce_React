@@ -7,7 +7,7 @@ import {
   Stack,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
-import {  FaCartPlus } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { CartItem } from "../components/Cart/CartItem";
@@ -37,6 +37,7 @@ export const Cart = () => {
 
   return (
     <Box
+    minH="70vh"
       maxW={{ base: "3xl", lg: "7xl" }}
       mx="auto"
       px={{ base: "4", md: "8", lg: "12" }}
@@ -60,7 +61,7 @@ export const Cart = () => {
               </Heading>
               {/* <FaCartPlus /> */}
               <NavLink to="/">
-                <Button variant={"link"} color={mode("blue.500", "blue.200")}>
+                <Button variant={"link"} color={mode("#3182CE", "blue.200")}>
                   Start Shopping and Add Items to Cart
                 </Button>
               </NavLink>
@@ -78,17 +79,17 @@ export const Cart = () => {
           </Stack>
         </Stack>
 
-        <Flex direction="column" align="center" flex="1">
+      {cartItems.length !== 0 &&  <Flex direction="column" align="center" flex="1">
           <CartOrderSummary finalPrice={totalPrice} />
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
             <NavLink to="/">
-              <Button variant={"link"} color={mode("blue.500", "blue.200")}>
+              <Button variant={"link"} color={mode("#3182CE", "blue.200")}>
                 Continue shopping
               </Button>
             </NavLink>
           </HStack>
-        </Flex>
+        </Flex>}
       </Stack>
     </Box>
   );

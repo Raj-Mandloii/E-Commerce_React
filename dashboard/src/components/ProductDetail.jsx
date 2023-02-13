@@ -238,7 +238,7 @@ export default function ProductDetails() {
           >
             <Button
               fontSize={"xs"}
-              bg={useColorModeValue("blue.300", "gray.50")}
+              bg={useColorModeValue("#3182CE", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
               textTransform={"uppercase"}
               onClick={addItemsToCart}
@@ -248,7 +248,7 @@ export default function ProductDetails() {
             {/* <NavLink to="/payment" > */}
             <Button
               fontSize={"xs"}
-              bg={useColorModeValue("blue.300", "gray.50")}
+              bg={useColorModeValue("#3182CE", "gray.50")}
               color={useColorModeValue("white", "gray.900")}
               textTransform={"uppercase"}
               onClick={()=> navigate('/payment')}

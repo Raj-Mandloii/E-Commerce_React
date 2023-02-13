@@ -11,7 +11,7 @@ const PageNotFound = () => (
       </Text> */}
      <Image src={oops} alt="page-not-found"  w='72'/>
       <NavLink mt={4} color="teal.500" to="/" replace="">
-        <Button mt="4" colorScheme="blue" width="full" fontSize={"xs"}>
+        <Button mt="4" colorScheme="#3182CE" width="full" fontSize={"xs"}>
           Go to Home Page
         </Button>
       </NavLink>

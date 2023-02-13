@@ -344,7 +344,7 @@ const MobileNavItem = ({ label, children, href }) => {
         </Text>
         <Text
           borderRadius={"50"}
-          bgColor={"blue.300"}
+          bgColor={"#3182CE"}
           fontWeight={600}
           mr="2"
           px={2}

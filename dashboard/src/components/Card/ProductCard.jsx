@@ -78,7 +78,7 @@ export const ProductCard = (props) => {
         </Stack>
       </NavLink>
       <Stack align="center">
-        <Button colorScheme="blue" width="full" onClick={addItemsToCart}>
+        <Button colorScheme="#3182CE" width="full" onClick={addItemsToCart}>
           Add to cart
         </Button>
         {/* <NavLink

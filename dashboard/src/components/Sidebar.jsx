@@ -164,8 +164,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
               Availability
             </Text>
             <Stack spacing={5} direction="column">
-              <Checkbox colorScheme="blue">In Stock</Checkbox>
-              <Checkbox colorScheme="blue">Out of Stock</Checkbox>
+              <Checkbox colorScheme="#3182CE">In Stock</Checkbox>
+              <Checkbox colorScheme="#3182CE">Out of Stock</Checkbox>
             </Stack>
           </Box>
         </Flex>

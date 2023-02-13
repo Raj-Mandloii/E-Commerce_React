@@ -15,7 +15,7 @@ const QuantitySelect = (props) => {
     <Select
       maxW="64px"
       aria-label="Select quantity"
-      focusBorderColor={useColorModeValue("blue.500", "blue.200")}
+      focusBorderColor={useColorModeValue("#3182CE", "blue.200")}
       {...props}
     >
       <option value="1">1</option>
