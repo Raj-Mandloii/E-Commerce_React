@@ -46,13 +46,14 @@ export default function WithSubnavigation() {
     dispatch(searchedQuery(q));
   };
   return (
-    <Box>
+    <Box >
       <Flex
         bg={useColorModeValue("#232F3E", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         h={"55px"}
         py={{ base: 6 }}
         px={{ base: 2 }}
+        pt='10'
         // border="1px solid red"
         // borderBottom={1}
         borderStyle={"solid"}
@@ -324,7 +325,7 @@ const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4} onClick={children && onToggle} >
       <Flex
         py={2}
         as={Link}

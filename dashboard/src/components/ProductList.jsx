@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React, { useEffect, useMemo, useState } from "react";
 import { Card } from "./Card/Card";
 import MobileCard from "./MobileCard";
@@ -56,13 +56,18 @@ const ProductList = () => {
         <LoadingIndicator topMargin={10} />
       ) : (
         queryFilter.map((el) => {
+          console.log("THIS ARE THE ITEMS");
           return <MobileCard key={el.id} items={el} />;
         })
       )}
-
+      {queryFilter.length == 0 && !loading &&  (
+        <Box display={"flex"} justifyContent="center" alignContent={"center"} mt="10">
+          <Text fontWeight={"extrabold"}>Items related to this category not found</Text>
+        </Box>
+      )}
       {/* MEDIUM TO LARGE SCREEN */}
       <Card data={featuredCollectionData} />
-      {!loading && (
+      {!loading && queryFilter.length !== 0 && (
         <PaginationSection current={current} setCurrent={setCurrent} />
       )}
     </Box>

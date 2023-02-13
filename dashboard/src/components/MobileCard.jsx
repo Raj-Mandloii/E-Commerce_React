@@ -32,6 +32,7 @@ const MobileCard = ({ items }) => {
       columnGap="4"
       position="relative"
     >
+     
       <Flex
         alignItems={"center"}
         role={"group"}
