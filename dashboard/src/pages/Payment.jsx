@@ -19,21 +19,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { emptyCart } from "../redux/appReducer/cartAction";
 import customToast from "../components/customToast/toast";
 
-const Form2 = ({ formCompleted, setFormCompleted, values, setValues }) => {
-  const toast = useToast();
-
+const Form2 = ({ values, setValues }) => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-
-    // if (
-    //   values.country &&
-    //   values.address &&
-    //   values.city &&
-    //   values.state &&
-    //   values.postal
-    // ) {
-    //   setFormCompleted(!formCompleted);
-    // }
   };
   return (
     <>
@@ -200,21 +188,17 @@ export default function PaymentDetails() {
     state: "",
     postal: "",
   });
-   // const camelCase = (str) => {
-  //   str= str.split("")
-  //   let first = str[0].toUpperCase
-  //   console.log(first + [,...str].join("") +  " field should not be empty")
-  //   return first + [,...str].join("") +  " field should not be empty"
-  // };
   const handlePayment = () => {
     for (let i in values) {
-      console.log(i + ": " + values[i]);
       if (values[i] == "") {
         customToast({
           toast: toast,
           title: "Cart",
-          // to capitalise the first letter of warning 
-          message: i.split("")[0].toUpperCase() + i.substring(1,i.length) + " field should not be empty",
+          // to capitalise the first letter of warning
+          message:
+            i.split("")[0].toUpperCase() +
+            i.substring(1, i.length) +
+            " field should not be empty",
           status: "warning",
         });
         return;
@@ -251,12 +235,7 @@ export default function PaymentDetails() {
           mx="5%"
           isAnimated
         ></Progress>
-        <Form2
-          values={values}
-          setValues={setValues}
-          formCompleted={formCompleted}
-          setFormCompleted={setFormCompleted}
-        />
+        <Form2 values={values} setValues={setValues} />
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Button

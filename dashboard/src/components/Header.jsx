@@ -12,7 +12,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
   Input,
   InputGroup,
@@ -50,14 +49,10 @@ export default function WithSubnavigation() {
       <Flex
         bg={useColorModeValue("#232F3E", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
-         h={"70px"}
+        h={"70px"}
         py={{ base: 6 }}
         px={{ base: 2 }}
         pt="10"
-        // border="1px solid red"
-        // pb={pathname === "/" && 10}
-        // border="1px solid red"
-        // borderBottom={1}
         borderStyle={"solid"}
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
@@ -66,7 +61,6 @@ export default function WithSubnavigation() {
           flex={{ base: 1, md: "auto" }}
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
-          
         >
           <IconButton
             color={"white"}
@@ -172,7 +166,6 @@ export default function WithSubnavigation() {
                 mr="4"
                 mt="1"
                 ml="4"
-                
               >
                 Sign in
               </Button>
@@ -219,7 +212,7 @@ export default function WithSubnavigation() {
   );
 }
 
-const DesktopNav = ({ cartItems, pathname }) => {
+const DesktopNav = ({ cartItems }) => {
   const linkColor = useColorModeValue("gray.200", "gray.200");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
@@ -315,21 +308,20 @@ const MobileNav = () => {
   return (
     <Stack
       bg={useColorModeValue("white", "white")}
-      // p={4}
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} {...navItem}  />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
+const MobileNavItem = ({ label, children, href,mobileisOpen, mobileonToggle }) => {
+  // const { isOpen, onToggle } = useDisclosure();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4} onClick={children && mobileonToggle}>
       <Flex
         py={2}
         as={Link}
@@ -361,14 +353,14 @@ const MobileNavItem = ({ label, children, href }) => {
           <Icon
             as={ChevronDownIcon}
             transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
+            transform={mobileisOpen ? "rotate(180deg)" : ""}
             w={6}
             h={6}
           />
         )}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse in={mobileisOpen} animateOpacity style={{ marginTop: "0!important" }}>
         <Stack
           mt={2}
           pl={4}
