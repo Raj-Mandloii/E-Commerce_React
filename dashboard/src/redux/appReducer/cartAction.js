@@ -19,5 +19,10 @@ export const removedFromCart = (id) => (dispatch) => {
 };
 
 export const directBuyer = (isDirectBuyer) => (dispatch) => {
-  dispatch({ type: actionTypes.DIRECT_BUYER, payload: isDirectBuyer })
+  dispatch({ type: actionTypes.DIRECT_BUYER, payload: isDirectBuyer });
+};
+
+export const emptyCart = () => (dispatch) => {
+  console.log("empty cart");
+  dispatch({ type: actionTypes.EMPTY_CART });
 };

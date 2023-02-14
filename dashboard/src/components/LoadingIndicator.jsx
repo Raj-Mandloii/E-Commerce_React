@@ -5,14 +5,12 @@ const LoadingIndicator = ({ topMargin }) => {
   const [visible, setVisible] = useState(false);
   let id;
   const moreWait = () => {
-    console.log("===");
     id = setTimeout(() => {
       setVisible(!visible);
     }, 3000);
   };
   useEffect(() => {
     moreWait();
-
     return () => {
       clearInterval(id);
     };

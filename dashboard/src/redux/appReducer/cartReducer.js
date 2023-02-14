@@ -58,8 +58,13 @@ export const cartReducer = (
         ),
       };
     case actionTypes.DIRECT_BUYER: {
-      console.log("IS BUYER " + action.payload)
+      // console.log("IS BUYER " + action.payload)
       return { ...state, isDirectbuyer: action.payload };
+    }
+    case actionTypes.EMPTY_CART: {
+      console.log("empty cart reducer");
+      saveLocalData("e-shop-cart", []);
+      return {...state, cartItems: getLocalData("e-shop-cart") || []};
     }
     default:
       return state;

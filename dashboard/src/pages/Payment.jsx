@@ -15,18 +15,34 @@ import {
 
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { saveLocalData } from "../utils/accessLocalStorage";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyCart } from "../redux/appReducer/cartAction";
+import customToast from "../components/customToast/toast";
 
-const Form2 = () => {
+const Form2 = ({ formCompleted, setFormCompleted, values, setValues }) => {
+  const toast = useToast();
 
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+
+    // if (
+    //   values.country &&
+    //   values.address &&
+    //   values.city &&
+    //   values.state &&
+    //   values.postal
+    // ) {
+    //   setFormCompleted(!formCompleted);
+    // }
+  };
   return (
     <>
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
         User Details
       </Heading>
-      <FormControl as={GridItem} colSpan={[6, 3]}>
+      <FormControl as={GridItem} colSpan={[6, 3]} isRequired>
         <FormLabel
+          onChange={handleChange}
           htmlFor="country"
           fontSize="sm"
           fontWeight="md"
@@ -39,6 +55,7 @@ const Form2 = () => {
         </FormLabel>
         <Select
           required
+          onChange={handleChange}
           id="country"
           name="country"
           autoComplete="country"
@@ -59,7 +76,7 @@ const Form2 = () => {
 
       <FormControl as={GridItem} colSpan={6}>
         <FormLabel
-          htmlFor="street_address"
+          htmlFor="address"
           fontSize="sm"
           fontWeight="md"
           color="gray.700"
@@ -71,8 +88,9 @@ const Form2 = () => {
           Street address
         </FormLabel>
         <Input
+          onChange={handleChange}
           type="text"
-          name="street_address"
+          name="address"
           id="street_address"
           autoComplete="street-address"
           focusBorderColor="brand.400"
@@ -97,6 +115,7 @@ const Form2 = () => {
           City
         </FormLabel>
         <Input
+          onChange={handleChange}
           type="text"
           name="city"
           id="city"
@@ -123,6 +142,7 @@ const Form2 = () => {
           State / Province
         </FormLabel>
         <Input
+          onChange={handleChange}
           type="text"
           name="state"
           id="state"
@@ -137,7 +157,7 @@ const Form2 = () => {
 
       <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
         <FormLabel
-          htmlFor="postal_code"
+          htmlFor="postal"
           fontSize="sm"
           fontWeight="md"
           color="gray.700"
@@ -149,8 +169,9 @@ const Form2 = () => {
           ZIP / Postal
         </FormLabel>
         <Input
+          onChange={handleChange}
           type="text"
-          name="postal_code"
+          name="postal"
           id="postal_code"
           autoComplete="postal-code"
           focusBorderColor="brand.400"
@@ -165,13 +186,53 @@ const Form2 = () => {
 };
 
 export default function PaymentDetails() {
+  const [formCompleted, setFormCompleted] = useState(false);
+
+  const dispatch = useDispatch();
   const toast = useToast();
   const [progress] = useState(100);
   const navigate = useNavigate();
   const isDirectBuyer = useSelector((store) => store.cartReducer.isDirectbuyer);
+  const [values, setValues] = useState({
+    country: "",
+    address: "",
+    city: "",
+    state: "",
+    postal: "",
+  });
+   // const camelCase = (str) => {
+  //   str= str.split("")
+  //   let first = str[0].toUpperCase
+  //   console.log(first + [,...str].join("") +  " field should not be empty")
+  //   return first + [,...str].join("") +  " field should not be empty"
+  // };
+  const handlePayment = () => {
+    for (let i in values) {
+      console.log(i + ": " + values[i]);
+      if (values[i] == "") {
+        customToast({
+          toast: toast,
+          title: "Cart",
+          // to capitalise the first letter of warning 
+          message: i.split("")[0].toUpperCase() + i.substring(1,i.length) + " field should not be empty",
+          status: "warning",
+        });
+        return;
+      }
+    }
 
-
-  
+    if (!isDirectBuyer) {
+      dispatch(emptyCart());
+    }
+    toast({
+      title: "Order is successfully placed.",
+      description: "",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+    navigate("/");
+  };
   return (
     <Box w={"100%"} h={"100vh"} mt="20">
       <Box
@@ -190,29 +251,19 @@ export default function PaymentDetails() {
           mx="5%"
           isAnimated
         ></Progress>
-        <Form2 />
+        <Form2
+          values={values}
+          setValues={setValues}
+          formCompleted={formCompleted}
+          setFormCompleted={setFormCompleted}
+        />
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
-           
-
             <Button
-              // w="7rem"
               px="4"
               colorScheme="blue"
               variant="solid"
-              onClick={() => {
-                if(!isDirectBuyer){
-                  saveLocalData("e-shop-cart",[])
-                }
-                toast({
-                  title: "Order is successfully placed.",
-                  description: "",
-                  status: "success",
-                  duration: 3000,
-                  isClosable: true,
-                });
-                navigate("/");
-              }}
+              onClick={handlePayment}
             >
               Confirm Order
             </Button>
