@@ -3,7 +3,10 @@ import * as actionTypes from "./actionTypes";
 
 let cartItems = getLocalData("e-shop-cart") || [];
 
-export const cartReducer = (state = { cartItems }, action) => {
+export const cartReducer = (
+  state = { cartItems, isDirectbuyer: false },
+  action
+) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       const item = action.payload;
@@ -31,7 +34,7 @@ export const cartReducer = (state = { cartItems }, action) => {
       break;
     case actionTypes.CHANGE_QUANTITY:
       const { id, quantity } = action.payload;
-      
+
       state.cartItems.forEach((el) => {
         if (el.id === id) {
           return (el.quantity += quantity);
@@ -42,7 +45,6 @@ export const cartReducer = (state = { cartItems }, action) => {
       saveLocalData("e-shop-cart", [...state.cartItems]);
       return { ...state, cartItems: [...state.cartItems] };
 
-      
     case actionTypes.REMOVE_FROM_CART:
       saveLocalData(
         "e-shop-cart",
@@ -55,6 +57,10 @@ export const cartReducer = (state = { cartItems }, action) => {
           (product) => product.id !== action.payload
         ),
       };
+    case actionTypes.DIRECT_BUYER: {
+      console.log("IS BUYER " + action.payload)
+      return { ...state, isDirectbuyer: action.payload };
+    }
     default:
       return state;
   }

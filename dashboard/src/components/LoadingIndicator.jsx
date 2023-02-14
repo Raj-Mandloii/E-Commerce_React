@@ -1,11 +1,28 @@
-import { CircularProgress,Box } from "@chakra-ui/react";
-import React from "react";
+import { CircularProgress,Box, Text, Flex } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
 const LoadingIndicator = ({topMargin}) => {
+  const [visible,setVisible] = useState(false)
+  let id;
+  const moreWait = () => {
+    console.log("===")
+    id = setTimeout(()=>{
+      setVisible(!visible)
+    },1000)
+  }
+  useEffect(() => {
+      moreWait()
+  
+    return () => {
+      clearInterval(id)
+    }
+  }, [])
+  
   return (
-    <Box display={"flex"} mt={topMargin} justifyContent={"center"} >
+    <Flex direction={"column"} alignItems="center"  mt={topMargin} justifyContent={"center"} >
       <CircularProgress isIndeterminate color="blue.300" mt="10" />
-    </Box>
+      {visible && <Text fontSize={["8","12","16"]} textAlign={"center"} fontWeight={"bold"} mt='6'> 😅 This is taking more time than usual, Please hold on.</Text>}
+    </Flex>
   );
 };
 

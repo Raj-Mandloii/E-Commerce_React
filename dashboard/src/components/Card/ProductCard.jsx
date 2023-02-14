@@ -14,7 +14,7 @@ import {
 import { Rating } from "./Rating";
 import { FavouriteButton } from "./FavouriteButton";
 import { PriceTag } from "./PriceTag";
-import { addToCart } from "../../redux/appReducer/cartAction";
+import { addToCart, directBuyer } from "../../redux/appReducer/cartAction";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import customToast from "../customToast/toast";
@@ -78,12 +78,7 @@ export const ProductCard = (props) => {
         </Stack>
       </NavLink>
       <Stack align="center">
-        <Button
-          colorScheme="blue"
-          width="full"
-          onClick={addItemsToCart}
-          
-        >
+        <Button colorScheme="blue" width="full" onClick={addItemsToCart}>
           Add to cart
         </Button>
         <NavLink
@@ -92,7 +87,15 @@ export const ProductCard = (props) => {
           fontWeight="medium"
           color={useColorModeValue("gray.600", "gray.400")}
         >
-          <Button colorScheme="blue" variant={"unstyled"} color="blue.600" w="100%" >Buy Now</Button>
+          <Button
+            colorScheme="blue"
+            variant={"unstyled"}
+            color="blue.600"
+            w="100%"
+            onClick={() => dispatch(directBuyer(true))}
+          >
+            Buy Now
+          </Button>
         </NavLink>
       </Stack>
     </Stack>

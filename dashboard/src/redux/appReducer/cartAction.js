@@ -1,7 +1,4 @@
-
 import * as actionTypes from "./actionTypes";
-
-
 
 export const addToCart = (item, quantity) => async (dispatch) => {
   try {
@@ -13,10 +10,14 @@ export const addToCart = (item, quantity) => async (dispatch) => {
   }
 };
 
-export const changeQuantity = (quantity,id) => (dispatch) => {
-    dispatch({ type: actionTypes.CHANGE_QUANTITY, payload: {id,quantity} });
-  };
+export const changeQuantity = (quantity, id) => (dispatch) => {
+  dispatch({ type: actionTypes.CHANGE_QUANTITY, payload: { id, quantity } });
+};
 
 export const removedFromCart = (id) => (dispatch) => {
   dispatch({ type: actionTypes.REMOVE_FROM_CART, payload: id });
+};
+
+export const directBuyer = (isDirectBuyer) => (dispatch) => {
+  dispatch({ type: actionTypes.DIRECT_BUYER, payload: isDirectBuyer })
 };

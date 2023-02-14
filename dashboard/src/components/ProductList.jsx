@@ -56,7 +56,6 @@ const ProductList = () => {
         <LoadingIndicator topMargin={10} />
       ) : (
         queryFilter.map((el) => {
-          console.log("THIS ARE THE ITEMS");
           return <MobileCard key={el.id} items={el} />;
         })
       )}

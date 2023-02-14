@@ -11,70 +11,15 @@ import {
   FormLabel,
   Input,
   Select,
-  SimpleGrid,
-  InputLeftAddon,
-  InputGroup,
-  Textarea,
-  FormHelperText,
-  InputRightElement,
 } from "@chakra-ui/react";
 
 import { useToast } from "@chakra-ui/react";
-import { useLocation, useNavigate } from "react-router-dom";
-
-const Form1 = () => {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-  return (
-    <>
-      <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
-        User Registration
-      </Heading>
-      <Flex>
-        <FormControl mr="5%">
-          <FormLabel htmlFor="first-name" fontWeight={"normal"}>
-            First name
-          </FormLabel>
-          <Input id="first-name" placeholder="First name" />
-        </FormControl>
-
-        <FormControl>
-          <FormLabel htmlFor="last-name" fontWeight={"normal"}>
-            Last name
-          </FormLabel>
-          <Input id="last-name" placeholder="First name" />
-        </FormControl>
-      </Flex>
-      <FormControl mt="2%">
-        <FormLabel htmlFor="email" fontWeight={"normal"}>
-          Email address
-        </FormLabel>
-        <Input id="email" type="email" />
-        <FormHelperText>We'll never share your email.</FormHelperText>
-      </FormControl>
-
-      <FormControl>
-        <FormLabel htmlFor="password" fontWeight={"normal"} mt="2%">
-          Password
-        </FormLabel>
-        <InputGroup size="md">
-          <Input
-            pr="4.5rem"
-            type={show ? "text" : "password"}
-            placeholder="Enter password"
-          />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
-    </>
-  );
-};
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { saveLocalData } from "../utils/accessLocalStorage";
 
 const Form2 = () => {
+
   return (
     <>
       <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
@@ -93,6 +38,7 @@ const Form2 = () => {
           Country / Region
         </FormLabel>
         <Select
+          required
           id="country"
           name="country"
           autoComplete="country"
@@ -218,82 +164,14 @@ const Form2 = () => {
   );
 };
 
-const Form3 = () => {
-  return (
-    <>
-      <Heading w="100%" textAlign={"center"} fontWeight="normal">
-        Social Handles
-      </Heading>
-      <SimpleGrid columns={1} spacing={6}>
-        <FormControl as={GridItem} colSpan={[3, 2]}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: "gray.50",
-            }}
-          >
-            Website
-          </FormLabel>
-          <InputGroup size="sm">
-            <InputLeftAddon
-              bg="gray.50"
-              _dark={{
-                bg: "gray.800",
-              }}
-              color="gray.500"
-              rounded="md"
-            >
-              http://
-            </InputLeftAddon>
-            <Input
-              type="tel"
-              placeholder="www.example.com"
-              focusBorderColor="brand.400"
-              rounded="md"
-            />
-          </InputGroup>
-        </FormControl>
-
-        <FormControl id="email" mt={1}>
-          <FormLabel
-            fontSize="sm"
-            fontWeight="md"
-            color="gray.700"
-            _dark={{
-              color: "gray.50",
-            }}
-          >
-            About
-          </FormLabel>
-          <Textarea
-            placeholder="you@example.com"
-            rows={3}
-            shadow="sm"
-            focusBorderColor="brand.400"
-            fontSize={{
-              sm: "sm",
-            }}
-          />
-          <FormHelperText>
-            Brief description for your profile. URLs are hyperlinked.
-          </FormHelperText>
-        </FormControl>
-      </SimpleGrid>
-    </>
-  );
-};
-
 export default function PaymentDetails() {
   const toast = useToast();
-  const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(100);
+  const [progress] = useState(100);
   const navigate = useNavigate();
-  const location = useLocation();
+  const isDirectBuyer = useSelector((store) => store.cartReducer.isDirectbuyer);
+
+
   
-  // const comingFrom = location.state?.from?.pathname || "/";
-  // console.log(comingFrom)
   return (
     <Box w={"100%"} h={"100vh"} mt="20">
       <Box
@@ -315,57 +193,29 @@ export default function PaymentDetails() {
         <Form2 />
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
-            <Flex>
-              {/* <Button
-                onClick={() => {
-                  setStep(step - 1);
-                  setProgress(progress - 33.33);
-                }}
-                isDisabled={step === 1}
-                colorScheme="teal"
-                variant="solid"
-                w="7rem"
-                mr="5%"
-              >
-                Back
-              </Button> */}
-              <Button
-                px="4"
-                isDisabled={step === 3}
-                onClick={() => {
-                  setStep(step + 1);
-                  if (step === 3) {
-                    setProgress(100);
-                  } else {
-                    setProgress(progress + 33.33);
-                  }
-                }}
-                colorScheme="teal"
-                variant="outline"
-              >
-                Place Order
-              </Button>
-            </Flex>
-            {step === 3 ? (
-              <Button
-                // w="7rem"
-                px="4"
-                colorScheme="red"
-                variant="solid"
-                onClick={() => {
-                  toast({
-                    title: "Order is successfully placed.",
-                    description: "",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                  navigate("/");
-                }}
-              >
-                Confirm Order
-              </Button>
-            ) : null}
+           
+
+            <Button
+              // w="7rem"
+              px="4"
+              colorScheme="blue"
+              variant="solid"
+              onClick={() => {
+                if(!isDirectBuyer){
+                  saveLocalData("e-shop-cart",[])
+                }
+                toast({
+                  title: "Order is successfully placed.",
+                  description: "",
+                  status: "success",
+                  duration: 3000,
+                  isClosable: true,
+                });
+                navigate("/");
+              }}
+            >
+              Confirm Order
+            </Button>
           </Flex>
         </ButtonGroup>
       </Box>

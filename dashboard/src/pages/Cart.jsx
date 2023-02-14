@@ -7,7 +7,6 @@ import {
   Stack,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
-import { FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { CartItem } from "../components/Cart/CartItem";
@@ -20,24 +19,21 @@ import {
 export const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  // console.log(cartItems);
-
   let totalPrice = cartItems.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0);
 
   const onChangeQuantity = (newQuantity, itemId) => {
-    // console.log(newQuantity, itemId)
     dispatch(changeQuantity(newQuantity, itemId));
   };
 
-  const onClickDelete = (id, item) => {
-    dispatch(removedFromCart(id)).then((_) => {});
+  const onClickDelete = (id) => {
+    dispatch(removedFromCart(id));
   };
 
   return (
     <Box
-    minH="70vh"
+      minH="70vh"
       maxW={{ base: "3xl", lg: "7xl" }}
       mx="auto"
       px={{ base: "4", md: "8", lg: "12" }}
@@ -79,17 +75,19 @@ export const Cart = () => {
           </Stack>
         </Stack>
 
-      {cartItems.length !== 0 &&  <Flex direction="column" align="center" flex="1">
-          <CartOrderSummary finalPrice={totalPrice} />
-          <HStack mt="6" fontWeight="semibold">
-            <p>or</p>
-            <NavLink to="/">
-              <Button variant={"link"} color={mode("#3182CE", "blue.200")}>
-                Continue shopping
-              </Button>
-            </NavLink>
-          </HStack>
-        </Flex>}
+        {cartItems.length !== 0 && (
+          <Flex direction="column" align="center" flex="1">
+            <CartOrderSummary finalPrice={totalPrice} />
+            <HStack mt="6" fontWeight="semibold">
+              <p>or</p>
+              <NavLink to="/">
+                <Button variant={"link"} color={mode("#3182CE", "blue.200")}>
+                  Continue shopping
+                </Button>
+              </NavLink>
+            </HStack>
+          </Flex>
+        )}
       </Stack>
     </Box>
   );
