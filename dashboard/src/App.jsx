@@ -4,6 +4,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ProductDetails from "./components/ProductDetail";
 import { Cart } from "./pages/Cart";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import PaymentDetails from "./pages/Payment";
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="/landing" element={<Landing />} />
         <Route path="product/:id" element={<ProductDetails />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
