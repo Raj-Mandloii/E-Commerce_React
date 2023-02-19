@@ -81,9 +81,9 @@ export default function WithSubnavigation() {
           <NavLink to="/" replace={true}>
             <Text
               display={{ base: "none", md: "flex" }}
-              // bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
-              color="red.500"
-              // bgClip="text"
+               bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
+              // color="red.500"
+               bgClip="text"
               fontSize="2xl"
               fontWeight="extrabold"
             >
