@@ -32,7 +32,7 @@ const LoadingIndicator = ({ topMargin }) => {
           mt="6"
         >
           {" "}
-          😅 This is taking more time than usual, Please hold on.
+          😅 On the way, Please hold on.
         </Text>
       )}
     </Flex>
