@@ -80,6 +80,7 @@ export default function Footer() {
               <SocialButton
                 label={"GitHub"}
                 href={"https://github.com/Raj-Mandloii/"}
+                
               >
                 <FaGithub />
               </SocialButton>

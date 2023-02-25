@@ -34,7 +34,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchedQuery } from "../redux/appReducer/sortFilterAction";
 import { FaBackward } from "react-icons/fa";
-
+import { getLocalData } from "../utils/accessLocalStorage";
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const dispatch = useDispatch();
@@ -42,11 +42,20 @@ export default function WithSubnavigation() {
   const query = useSelector((store) => store.sortFilterReducer.query);
   const token = useSelector((store) => store.authReducer.token);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  const navigate = useNavigate()
-  useEffect(() => {}, [pathname]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+  }, [pathname, token]);
   const handleSearch = (q) => {
     dispatch(searchedQuery(q));
   };
+  function capital (str){
+    const arr = str.split("_");
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);}
+    const str2 = arr.join(" ");
+      return str2
+  }
   return (
     <Box>
       <Flex
@@ -65,15 +74,15 @@ export default function WithSubnavigation() {
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
         >
-           <IconButton
-            color={"white"}
-            variant={"ghost"}
-            onClick={()=> navigate(-1)}
-            icon={<ArrowBackIcon/>}
-            aria-label={"Toggle Navigation"}
-          />
-
-
+          {pathname !== "/" && (
+            <IconButton
+              color={"white"}
+              variant={"ghost"}
+              onClick={() => navigate(-1)}
+              icon={<ArrowBackIcon />}
+              aria-label={"Toggle Navigation"}
+            />
+          )}
           <IconButton
             color={"white"}
             onClick={onToggle}
@@ -91,7 +100,6 @@ export default function WithSubnavigation() {
           //  border="1px solid red"
         >
           <NavLink to="/" replace={true}>
-           
             <Text
               display={{ base: "none", md: "flex" }}
               bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
@@ -167,7 +175,11 @@ export default function WithSubnavigation() {
               <FiUser px="4" size={"32"} />
               <Flex direction={"column"}>
                 <Text>Welcome</Text>
-                <Text>Raj Mandloi</Text>
+                <Text>
+                  {capital(getLocalData("profile").firstname) +
+                    " " +
+                    capital(getLocalData("profile").lastname)}
+                </Text>
               </Flex>
             </Flex>
           ) : (
@@ -218,7 +230,6 @@ export default function WithSubnavigation() {
           </Stack>
         </Flex>
       )}
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
