@@ -44,17 +44,17 @@ export default function WithSubnavigation() {
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const navigate = useNavigate();
 
-  useEffect(() => {
-  }, [pathname, token]);
+  useEffect(() => {}, [pathname, token]);
   const handleSearch = (q) => {
     dispatch(searchedQuery(q));
   };
-  function capital (str){
+  function capital(str) {
     const arr = str.split("_");
     for (var i = 0; i < arr.length; i++) {
-        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);}
+      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
     const str2 = arr.join(" ");
-      return str2
+    return str2;
   }
   return (
     <Box>
@@ -161,27 +161,29 @@ export default function WithSubnavigation() {
           mr="2"
         >
           {token ? (
-            <Flex
-              // _hover={{
-              //   color: "gray.500",
-              // }}
-              w="100px"
-              color={"white"}
-              fontSize="xs"
-              alignItems={"center"}
-              mt="0"
-              ml="4"
-            >
-              <FiUser px="4" size={"32"} />
-              <Flex direction={"column"}>
-                <Text>Welcome</Text>
-                <Text>
-                  {capital(getLocalData("profile").firstname) +
-                    " " +
-                    capital(getLocalData("profile").lastname)}
-                </Text>
-              </Flex>
-            </Flex>
+           
+                <Flex
+                  // _hover={{
+                  //   color: "gray.500",
+                  // }}
+                  w="100px"
+                  color={"white"}
+                  fontSize="xs"
+                  alignItems={"center"}
+                  mt="0"
+                  ml="4"
+                >
+                  <FiUser px="4" size={"32"} />
+                  <Flex direction={"column"}>
+                    <Text>Welcome</Text>
+                    <Text>
+                      {capital(getLocalData("profile").firstname) +
+                        " " +
+                        capital(getLocalData("profile").lastname)}
+                    </Text>
+                  </Flex>
+                </Flex>
+              
           ) : (
             <NavLink to="/login">
               <Button
