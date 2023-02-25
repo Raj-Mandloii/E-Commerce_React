@@ -24,14 +24,16 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   SearchIcon,
+  ArrowBackIcon,
 } from "@chakra-ui/icons";
 import { FiUser } from "react-icons/fi";
 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import WebLogo from "../assets/logo.png";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchedQuery } from "../redux/appReducer/sortFilterAction";
+import { FaBackward } from "react-icons/fa";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -40,6 +42,7 @@ export default function WithSubnavigation() {
   const query = useSelector((store) => store.sortFilterReducer.query);
   const token = useSelector((store) => store.authReducer.token);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  const navigate = useNavigate()
   useEffect(() => {}, [pathname]);
   const handleSearch = (q) => {
     dispatch(searchedQuery(q));
@@ -62,6 +65,15 @@ export default function WithSubnavigation() {
           ml={{ base: -2 }}
           display={{ base: "flex", md: "none" }}
         >
+           <IconButton
+            color={"white"}
+            variant={"ghost"}
+            onClick={()=> navigate(-1)}
+            icon={<ArrowBackIcon/>}
+            aria-label={"Toggle Navigation"}
+          />
+
+
           <IconButton
             color={"white"}
             onClick={onToggle}
@@ -79,11 +91,12 @@ export default function WithSubnavigation() {
           //  border="1px solid red"
         >
           <NavLink to="/" replace={true}>
+           
             <Text
               display={{ base: "none", md: "flex" }}
-               bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
+              bgGradient="linear-gradient(to bottom, #0066ff 0%, #cc66ff 100%)"
               // color="red.500"
-               bgClip="text"
+              bgClip="text"
               fontSize="2xl"
               fontWeight="extrabold"
             >
@@ -307,18 +320,21 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue("white", "white")}
-      display={{ md: "none" }}
-    >
+    <Stack bg={useColorModeValue("white", "white")} display={{ md: "none" }}>
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem}  />
+        <MobileNavItem key={navItem.label} {...navItem} />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href,mobileisOpen, mobileonToggle }) => {
+const MobileNavItem = ({
+  label,
+  children,
+  href,
+  mobileisOpen,
+  mobileonToggle,
+}) => {
   // const { isOpen, onToggle } = useDisclosure();
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
   return (
@@ -361,7 +377,11 @@ const MobileNavItem = ({ label, children, href,mobileisOpen, mobileonToggle }) =
         )}
       </Flex>
 
-      <Collapse in={mobileisOpen} animateOpacity style={{ marginTop: "0!important" }}>
+      <Collapse
+        in={mobileisOpen}
+        animateOpacity
+        style={{ marginTop: "0!important" }}
+      >
         <Stack
           mt={2}
           pl={4}
