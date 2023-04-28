@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import Pagination from "@choc-ui/paginator";
 const PaginationSection = ({current, setCurrent}) => {
   

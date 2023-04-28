@@ -70,7 +70,7 @@ export default function Footer() {
                   fontSize="2xl"
                   fontWeight="extrabold"
                 >
-                  {"<E-SHOP/>"}
+                  E-SHOP
                 </Text>
               </NavLink>
               {/* <Logo color={useColorModeValue("gray.700", "white")} /> */}
