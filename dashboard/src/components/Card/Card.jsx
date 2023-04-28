@@ -34,7 +34,7 @@ export const Card = ({ data }) => {
   return (
     <Box
       display={{ base: "none", md: "flex" }}
-      maxW="7xl"
+      // maxW="7xl"
       mx="auto"
       px={{ base: "4", md: "8", lg: "12" }}
       py={{ base: "6", md: "8", lg: "12" }}
